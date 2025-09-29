@@ -1,7 +1,7 @@
----
+<!-- ---
 title: Adithyaa Rettaikudi Gurumoorthi
 layout: default
----
+--- -->
 # adithyaa rettaikudi gurumoorthi
 <img src="projects/images/pfp2.jpg" alt="drawing" width="200"/>
 
