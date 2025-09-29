@@ -1,5 +1,5 @@
 ---
-title: User Study for Human Takeover Steering System
+title: Human Takeover Steering System
 layout: default
 ---
 ## User Study for Human Takeover Steering System

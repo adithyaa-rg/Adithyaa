@@ -1,5 +1,5 @@
 ---
-title: Learning from Demonstration for Agents with Mismatched Dynamics
+title: LfO
 layout: default
 ---
 ## Learning from Demonstration for Agents with Mismatched Dynamics

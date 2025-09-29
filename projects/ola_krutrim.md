@@ -1,5 +1,5 @@
 ---
-title: Ola Krutrim - Embodied AI
+title: Embodied AI
 layout: default
 ---
 ## Ola Krutrim - Embodied AI
