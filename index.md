@@ -1,4 +1,7 @@
-<!-- # Adithyaa Rettaikudi Gurumoorthi -->
+---
+title: Adithyaa Rettaikudi Gurumoorthi
+layout: default
+---
 <img src="projects/images/pfp2.jpg" alt="drawing" width="200"/>
 
 I am a final-year student at the Indian Institute of Technology, Madras. I am interested in research topics in **Reinforcement Learning**, **Learning based Controls** and **Theoretical Machine Learning**. 
