@@ -30,4 +30,4 @@ Formulate a novel model-based approach to tackle the problem of Learning from Ob
 Worked as a Computer Vision and Planning engineer, aiding their efforts to build an autonomous four-wheeler system to move on rocky terrains and Indian roads.
 
 - ### [User Study for Human Takeover Steering System](/projects/user_study_steering.md#user-study-for-human-takeover-steering-system)
-
+Developed an interactive steering system 
