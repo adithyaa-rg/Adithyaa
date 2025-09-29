@@ -1,4 +1,7 @@
-
+---
+title: Adithyaa Rettaikudi Gurumoorthi
+layout: default
+---
 # Adithyaa Rettaikudi Gurumoorthi
 <img src="projects/images/pfp2.jpg" alt="drawing" width="200"/>
 
