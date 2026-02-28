@@ -11,13 +11,13 @@ layout: default
 
 - **[Nirav Bhatt](https://biotech.iitm.ac.in/innerfaculty.php?fname=Nirav%20P%20Bhatt)**  
   *Department of Data Science and AI (DSAI), IIT Madras*
----
 
 ### **Mentor**
 
 - **[Returaj Burnwal](https://returaj.github.io/)**  
   *IIT Madras*
----
+
+
 
 ### Problem Statement
 Robots would struggle to perform complex tasks, such as assisting humans in daily activities, using classical algorithmic approaches. Even with theoretically complete approaches such as Reinforcement Learning, exploration in the real world is sample-inefficient and expensive. These limit the potential of these approaches. 
