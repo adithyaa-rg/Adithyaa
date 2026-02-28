@@ -34,11 +34,11 @@ We are given trajectories of demonstrator experts and we are given mixed distrib
 
   <img src="images/learning_from_demo/step1.png" 
        alt="Step 1: State Occupancy Matching" 
-       width="100%">
+       width="50%">
 
   <img src="images/learning_from_demo/step2.png" 
        alt="Step 2: Density based Weighting" 
-       width="98%">
+       width="50%">
 
 </div>
 
@@ -49,5 +49,4 @@ We are given trajectories of demonstrator experts and we are given mixed distrib
        width="50%">
 
 </div>
-### Current Progress
-I am currently working on literature review to formulate the methodology and starting to implementation currently. I am working to integrate a model to enhance the learning and use state occupancy matching to learn the important states from the expert demonstrations.
+
