@@ -1,2 +1,10 @@
 title: "Adithyaa Rettaikudi Gurumoorthi"
-theme: minima
+description: "Robotics & ML researcher. Dual Degree at IIT Madras."
+url: ""
+baseurl: ""
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

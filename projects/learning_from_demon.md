@@ -1,52 +1,54 @@
 ---
-title: LfO
+title: "Learning from Observations"
 layout: default
 ---
+
 ## Learning from Demonstration for Agents with Mismatched Dynamics
 
-### **Advisors**
+**Advisors:** [Prof. B Ravindran](https://wsai.iitm.ac.in/~ravi/), Center for Responsible AI (CeRAI), IIT Madras  
+**Mentor:** [Returaj Burnwal](https://returaj.github.io/), IIT Madras  
+**Status:** Ongoing (Aug 2025 – Present)
 
-- **[B Ravindran](https://wsai.iitm.ac.in/~ravi/)**  
-  *Center for Responsible AI (CeRAI), IIT Madras*
+---
 
-- **[Nirav Bhatt](https://biotech.iitm.ac.in/innerfaculty.php?fname=Nirav%20P%20Bhatt)**  
-  *Department of Data Science and AI (DSAI), IIT Madras*
+### Motivation
 
-### **Mentor**
+Classical algorithmic approaches struggle with the complexity of real-world robot tasks. Even sample-efficient methods like Reinforcement Learning are prohibitively expensive when exploration happens in the real world. Imitation Learning addresses this by learning from demonstration data — but most methods require *action* information, which is often unavailable in practice.
 
-- **[Returaj Burnwal](https://returaj.github.io/)**  
-  *IIT Madras*
+**Learning from Observations (LfO)** is a subfield of Imitation Learning that learns purely from state sequences, without access to the demonstrator's actions or knowledge of the environment dynamics. This is more realistic: a robot watching a human perform a task cannot directly observe neural commands or joint torques.
 
+---
 
+### Problem Setup
 
-### Problem Statement
-Robots would struggle to perform complex tasks, such as assisting humans in daily activities, using classical algorithmic approaches. Even with theoretically complete approaches such as Reinforcement Learning, exploration in the real world is sample-inefficient and expensive. These limit the potential of these approaches. 
+I focus on the case where the imitator and demonstrator have **parametrically different dynamics** — for example, different mass, joint stiffness, or actuation profiles. This is the first step towards transfer learning in robotics, where knowledge must flow across structurally distinct agents such as quadrupeds, humanoids, or manipulators of different builds.
 
-Imitation Learning solves this problem by learning from data collected from demonstrations. However, the data usually contains action information, which is not always available. 
+**Given:**
+- State-only trajectory demonstrations from an expert (egocentric state sequences)
+- Mixed distribution of state-action pairs from the imitator agent
 
-Learning from Observations (LfO) is a subfield of Imitation Learning that focuses on learning from demonstrations. The observations can be partial, third-person or from the agent itself. The agent also lacks information about the environment's dynamics and the expert's actions. While this is a challenging problem, it is also a more realistic approach to learning policies across agents, given the dynamic complexities of agents such as quadrupeds and humanoids, as well as the difficulty of modelling real-world environments. Humans often exercise these ideas when they learn to tackle new environments or tasks.
+**Goal:** Learn a policy for the imitator that reproduces expert behaviour, despite dynamic mismatch.
 
-I consider the case where we have egocentric state only demonstrations. Based on this information, my project focuses on State-Only Imitation Learning approaches for a parametrically different dynamic robotic agent. This also serves as the first step to a transfer learning scenario within the domain of robotics. 
+---
 
-We are given trajectories of demonstrator experts and we are given mixed distribution trajectories of state-action pairs for the imitator agent.
+### Approach
 
-<div style="display: flex; justify-content: center; gap: 5px;">
-
-  <img src="images/learning_from_demo/step1.png" 
-       alt="Step 1: State Occupancy Matching" 
-       width="50%">
-
-  <img src="images/learning_from_demo/step2.png" 
-       alt="Step 2: Density based Weighting" 
-       width="50%">
-
+<div style="display: flex; justify-content: center; gap: 5px; margin: 1.5rem 0;">
+  <img src="images/learning_from_demo/step1.png" alt="Step 1: State Occupancy Matching" width="48%">
+  <img src="images/learning_from_demo/step2.png" alt="Step 2: Density-based Weighting" width="48%">
+</div>
+<div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
+  <img src="images/learning_from_demo/step3.png" alt="Step 3: Sub-trajectory Sampling and Weighted Learning" width="50%">
 </div>
 
-<div style="display: flex; justify-content: center;">
+**Step 1 — State Occupancy Matching:** Use density estimation methods to model the expert's state distribution and compare it with the imitator's offline dataset.
 
-  <img src="images/learning_from_demo/step3.png" 
-       alt="Step 3: Subtrajectory Sampling and Weighted Learning" 
-       width="50%">
+**Step 2 — Density-Based Reward Assignment:** Score transitions in the imitator dataset by their likelihood under the expert distribution, and assign rewards accordingly.
 
-</div>
+**Step 3 — Sub-trajectory Sampling:** Use state sequence information (rather than individual transitions) to identify important sub-trajectories. Implement Weighted Behaviour Cloning using these scores to train the imitator policy.
 
+---
+
+### Why This Matters
+
+This approach is a building block for cross-morphology robot learning: teaching a new robot not by re-collecting expert data, but by re-using state observations of a different agent. It has direct implications for humanoid and quadruped skill transfer.
