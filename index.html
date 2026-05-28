@@ -15,19 +15,19 @@
         />
         <style>
             :root {
-                --bg: #f6f3ee;
-                --surface: #edeae3;
-                --border: #d4cdc2;
-                --text: #1c1c28;
-                --muted: #6a6278;
-                --heading: #0f0f1a;
-                --accent: #b5452a;
-                --link: #2e5a9c;
-                --tag-bg: #e3dfd7;
-                --timeline: #c8c0b2;
-                --green-bg: #ecf4ed;
-                --green-txt: #276128;
-                --green-bdr: #a3c9a5;
+                --bg: #f9f6f1;
+                --surface: #f0ebe3;
+                --border: #e2d9ce;
+                --text: #2a1f18;
+                --muted: #7a6d65;
+                --heading: #1a120d;
+                --accent: #c0522f;
+                --link: #2d5fa0;
+                --tag-bg: #ede6dc;
+                --timeline: #c9bfb2;
+                --green-bg: #eef5ee;
+                --green-txt: #2a6b2b;
+                --green-bdr: #a8cfa9;
 
                 --serif: "Cormorant Garamond", Georgia, serif;
                 --sans: "Source Sans 3", system-ui, sans-serif;
@@ -516,6 +516,83 @@
                 gap: 0.38rem;
             }
 
+            /* ── COURSEWORK ───────────────────────────────────── */
+            .coursework-intro {
+                font-size: 0.95rem;
+                color: var(--muted);
+                line-height: 1.75;
+                margin-bottom: 2rem;
+                max-width: 640px;
+            }
+            .coursework-clusters {
+                display: flex;
+                flex-direction: column;
+                gap: 0.85rem;
+            }
+            .cluster {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 3px;
+                padding: 1.3rem 1.5rem;
+                display: grid;
+                grid-template-columns: 200px 1fr;
+                gap: 1.25rem;
+                align-items: start;
+                transition: border-color 0.18s;
+            }
+            .cluster:hover {
+                border-color: var(--accent);
+            }
+            .cluster-label {
+                font-family: var(--mono);
+                font-size: 0.68rem;
+                color: var(--accent);
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                line-height: 1.5;
+                padding-top: 0.1rem;
+            }
+            .cluster-label span {
+                display: block;
+                font-family: var(--sans);
+                font-size: 0.78rem;
+                color: var(--muted);
+                text-transform: none;
+                letter-spacing: 0;
+                margin-top: 0.2rem;
+                font-style: italic;
+            }
+            .cluster-courses {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.4rem;
+            }
+            .course-tag {
+                font-family: var(--mono);
+                font-size: 0.63rem;
+                background: var(--tag-bg);
+                color: var(--text);
+                padding: 0.22rem 0.6rem;
+                border-radius: 2px;
+                letter-spacing: 0.02em;
+                border: 1px solid transparent;
+                transition:
+                    border-color 0.15s,
+                    background 0.15s;
+            }
+            .course-tag:hover {
+                border-color: var(--accent);
+                background: #f0ebe2;
+            }
+            .course-tag.kth {
+                background: #e8f0f8;
+                color: var(--link);
+            }
+            .course-tag.kth:hover {
+                border-color: var(--link);
+                background: #dceaf7;
+            }
+
             /* ── TEACHING ─────────────────────────────────────── */
             .teaching-item {
                 background: var(--surface);
@@ -617,6 +694,10 @@
                 .hero-name {
                     font-size: 2.1rem;
                 }
+                .cluster {
+                    grid-template-columns: 1fr;
+                    gap: 0.75rem;
+                }
             }
         </style>
     </head>
@@ -629,6 +710,7 @@
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#education">Education</a></li>
+                <li><a href="#coursework">Coursework</a></li>
                 <li><a href="#skills">Skills</a></li>
             </ul>
         </nav>
@@ -638,8 +720,8 @@
             <img src="projects/pfp3.jpg" alt="Adithyaa RG" class="hero-photo" />
             <div class="hero-text">
                 <p class="hero-label">
-                    // robotics &middot; reinforcement learning &middot; optimal
-                    control
+                    // robotics &middot; reinforcement learning &middot; theory
+                    of learning machines
                 </p>
                 <h1 class="hero-name">Adithyaa Rettaikudi<br />Gurumoorthi</h1>
                 <p class="hero-affil">
@@ -788,12 +870,13 @@
                             >
                         </div>
                         <h3 class="tl-title">
-                            Learning from Demonstration for Agents with
-                            Mismatched Dynamics
+                            Learning from Demonstration for Agents: State only
+                            Imitation Learning
                         </h3>
                         <p class="tl-org">
                             Center for Responsible AI (CeRAI), IIT Madras
-                            &nbsp;&middot;&nbsp; Advisor: Prof. B Ravindran
+                            &nbsp;&middot;&nbsp; Advisor: Prof. B Ravindran,
+                            Prof. Nirav Bhatt
                         </p>
                         <div class="tl-body">
                             <ul>
@@ -956,10 +1039,13 @@
                         href="projects/learning_from_demon.html"
                         class="project-card"
                     >
-                        <span class="pc-type">Research &mdash; Ongoing</span>
+                        <span class="pc-type"
+                            >Research &mdash; In Experimentation and
+                            Writing</span
+                        >
                         <h3 class="pc-title">
-                            Learning from Observations &mdash; Mismatched
-                            Dynamics
+                            Learning from Observations &mdash; State only
+                            Imitation Learning
                         </h3>
                         <p class="pc-desc">
                             State-only imitation learning for imitator agents
@@ -1115,7 +1201,7 @@
                     <div class="timeline-item">
                         <div class="timeline-meta">
                             <span class="tl-date"
-                                >Nov 2021 &ndash; May 2026</span
+                                >Nov 2021 &ndash; Jul 2026</span
                             >
                             <span class="tl-badge badge-active">Ongoing</span>
                         </div>
@@ -1139,11 +1225,212 @@
                 </div>
             </div>
         </section>
+        <!-- ── TEACHING ───────────────────────────────────────── -->
+        <section id="teaching">
+            <div class="wrap">
+                <p class="section-label">06&nbsp;/&nbsp;teaching</p>
+                <h2 class="section-title">Teaching Assistantship</h2>
+                <div class="teaching-item">
+                    <div>
+                        <h3>Design of Mechanical Systems 1 &mdash; ED2011</h3>
+                        <p>
+                            IIT Madras &nbsp;&middot;&nbsp; Advisor: Prof.
+                            Srikanth Vedantam
+                        </p>
+                        <p
+                            style="
+                                font-size: 0.855rem;
+                                color: var(--muted);
+                                margin-top: 0.4rem;
+                            "
+                        >
+                            Created assignments on Hooke&rsquo;s Law, Beam
+                            Bending, Torsion, and Buckling. Conducted
+                            interactive tutorial sessions for theoretical
+                            concepts and problem-solving.
+                        </p>
+                    </div>
+                    <span class="teaching-date">Aug &ndash; Nov 2025</span>
+                </div>
+                <div class="teaching-item" style="margin-top: 1rem">
+                    <div>
+                        <h3>
+                            Data Science - Theory and Practice &mdash; ED5340
+                        </h3>
+                        <p>
+                            IIT Madras &nbsp;&middot;&nbsp; Advisor: Prof.
+                            Ramanathan Muthuganapathy
+                        </p>
+                        <p
+                            style="
+                                font-size: 0.855rem;
+                                color: var(--muted);
+                                margin-top: 0.4rem;
+                            "
+                        >
+                            Helped in creating and conducting tutorials and
+                            laboratory sessions. Primarily involved in
+                            conducting sessions on Basic Python Programming and
+                            Machine Learning Fundamentals including Regression
+                            (Linear and Polynomial), SVM, PCA and Clustering.
+                        </p>
+                    </div>
+                    <span class="teaching-date">Jan &ndash; May 2026</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── COURSEWORK ─────────────────────────────────────── -->
+        <section id="coursework">
+            <div class="wrap">
+                <p class="section-label">07&nbsp;/&nbsp;coursework</p>
+                <h2 class="section-title">Relevant Coursework</h2>
+                <p class="coursework-intro">
+                    A selection of courses across my five years at IIT Madras
+                    and my exchange semester at KTH Stockholm, organised by
+                    theme. Courses taken at KTH are marked in blue.
+                </p>
+                <div class="coursework-clusters">
+                    <div class="cluster">
+                        <div class="cluster-label">
+                            Reinforcement Learning &amp; Decision Making
+                            <span>The core of my research interests</span>
+                        </div>
+                        <div class="cluster-courses">
+                            <span class="course-tag"
+                                >Reinforcement Learning</span
+                            >
+                            <span class="course-tag kth"
+                                >Multi-Agent Systems &amp; AI</span
+                            >
+                            <span class="course-tag"
+                                >Recent Advances in Reinforcement Learning</span
+                            >
+                            <span class="course-tag"
+                                >Introduction to Probability and
+                                Statistics</span
+                            >
+                            <span class="course-tag"
+                                >Introduction to Motion Planning</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="cluster">
+                        <div class="cluster-label">
+                            Robotics &amp; Control
+                            <span>Control theory and robot dynamics</span>
+                        </div>
+                        <div class="cluster-courses">
+                            <span class="course-tag"
+                                >Modern Control Theory</span
+                            >
+                            <span class="course-tag"
+                                >Nonlinear System Analysis</span
+                            >
+                            <span class="course-tag"
+                                >Mechanics of Serial Robots</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="cluster">
+                        <div class="cluster-label">
+                            Machine Learning &amp; Deep Learning
+                            <span>Theory and architecture</span>
+                        </div>
+                        <div class="cluster-courses">
+                            <span class="course-tag kth"
+                                >Artificial Neural Networks &amp; Deep
+                                Architectures</span
+                            >
+                            <span class="course-tag"
+                                >Machine Learning Techniques</span
+                            >
+                            <span class="course-tag"
+                                >Data Science &mdash; Theory &amp;
+                                Practice</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="cluster">
+                        <div class="cluster-label">
+                            Mathematics &amp; Computation
+                            <span>Foundations and geometry</span>
+                        </div>
+                        <div class="cluster-courses">
+                            <span class="course-tag"
+                                >Algorithms in Computational Geometry</span
+                            >
+                            <span class="course-tag"
+                                >Seires &amp; Matrices</span
+                            >
+                            <span class="course-tag"
+                                >Differential Equations</span
+                            >
+                            <span class="course-tag"
+                                >Introduction to Computation and
+                                Visualisation</span
+                            >
+                            <span class="course-tag"
+                                >Functions of Several Variables</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="cluster">
+                        <div class="cluster-label">
+                            Mechanical &amp; Systems Design
+                            <span>The engineering design core</span>
+                        </div>
+                        <div class="cluster-courses">
+                            <span class="course-tag"
+                                >Mechatronics Systems Design</span
+                            >
+                            <span class="course-tag"
+                                >Design of Mechanical Systems I &amp; II</span
+                            >
+                            <span class="course-tag"
+                                >Human Anatomy, Physiology &amp;
+                                Biomechanics</span
+                            >
+                            <span class="course-tag"
+                                >Introduction to Robotics &amp; Field and
+                                Service Robotics</span
+                            >
+                            <span class="course-tag"
+                                >Digital Signal Processing</span
+                            >
+                        </div>
+                    </div>
+                    <div class="cluster">
+                        <div class="cluster-label">
+                            Humanities &amp; Social Sciences
+                            <span>The non-tech courses</span>
+                        </div>
+                        <div class="cluster-courses">
+                            <span class="course-tag"
+                                >Introduction to Linguistics</span
+                            >
+                            <span class="course-tag">Linguistic Typology</span>
+                            <span class="course-tag"
+                                >State, Politics and Foreign Policy in
+                                China</span
+                            >
+                            <span class="course-tag"
+                                >Film Theory and Practice</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- ── SKILLS ─────────────────────────────────────────── -->
         <section id="skills">
             <div class="wrap">
-                <p class="section-label">06&nbsp;/&nbsp;skills</p>
+                <p class="section-label">08&nbsp;/&nbsp;skills</p>
                 <h2 class="section-title">Technical Toolkit</h2>
                 <div class="skills-grid">
                     <div class="skill-group">
@@ -1182,74 +1469,6 @@
                             ><span class="tag">Figma</span>
                         </div>
                     </div>
-                    <div class="skill-group">
-                        <h3>Relevant Courses</h3>
-                        <div class="skill-tags">
-                            <span class="tag">Reinforcement Learning</span>
-                            <span class="tag">Multi-Agent Systems</span>
-                            <span class="tag">Motion Planning</span>
-                            <span class="tag">Modern Control Theory</span>
-                            <span class="tag">Nonlinear System Analysis</span>
-                            <span class="tag">Computational Geometry</span>
-                            <span class="tag">Deep Architectures</span>
-                            <span class="tag">Serial Robot Mechanics</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ── TEACHING ───────────────────────────────────────── -->
-        <section id="teaching">
-            <div class="wrap">
-                <p class="section-label">07&nbsp;/&nbsp;teaching</p>
-                <h2 class="section-title">Teaching Assistantship</h2>
-                <div class="teaching-item">
-                    <div>
-                        <h3>Design of Mechanical Systems 1 &mdash; ED2011</h3>
-                        <p>
-                            IIT Madras &nbsp;&middot;&nbsp; Advisor: Prof.
-                            Srikanth Vedantam
-                        </p>
-                        <p
-                            style="
-                                font-size: 0.855rem;
-                                color: var(--muted);
-                                margin-top: 0.4rem;
-                            "
-                        >
-                            Created assignments on Hooke&rsquo;s Law, Beam
-                            Bending, Torsion, and Buckling. Conducted
-                            interactive tutorial sessions for theoretical
-                            concepts and problem-solving.
-                        </p>
-                    </div>
-                    <span class="teaching-date">Aug &ndash; Nov 2025</span>
-                </div>
-                <div class="teaching-item">
-                    <div>
-                        <h3>
-                            Data Science - Theory and Practice &mdash; ED5340
-                        </h3>
-                        <p>
-                            IIT Madras &nbsp;&middot;&nbsp; Advisor: Prof.
-                            Ramanathan Muthuganapathy
-                        </p>
-                        <p
-                            style="
-                                font-size: 0.855rem;
-                                color: var(--muted);
-                                margin-top: 0.4rem;
-                            "
-                        >
-                            Helped in creating and conducting tutorials and
-                            laboratory sessions. Primarily involved in
-                            conducting sessions on Basic Python Programming and
-                            Machine Learning Fundamentals including Regression
-                            (Linear and Polynomial), SVM, PCA and Clustering.
-                        </p>
-                    </div>
-                    <span class="teaching-date">Jan &ndash; May 2026</span>
                 </div>
             </div>
         </section>
