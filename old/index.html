@@ -1,0 +1,1528 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Adithyaa Rettaikudi Gurumoorthi</title>
+        <meta
+            name="description"
+            content="Robotics & ML researcher at IIT Madras. Dual Degree in Engineering Design & Robotics."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --bg: #f9f6f1;
+                --surface: #f0ebe3;
+                --border: #e2d9ce;
+                --text: #2a1f18;
+                --muted: #7a6d65;
+                --heading: #1a120d;
+                --accent: #c0522f;
+                --link: #2d5fa0;
+                --tag-bg: #ede6dc;
+                --timeline: #c9bfb2;
+                --green-bg: #eef5ee;
+                --green-txt: #2a6b2b;
+                --green-bdr: #a8cfa9;
+
+                --serif: "Cormorant Garamond", Georgia, serif;
+                --sans: "Source Sans 3", system-ui, sans-serif;
+                --mono: "JetBrains Mono", "Courier New", monospace;
+
+                --w: 820px;
+            }
+
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            html {
+                scroll-behavior: smooth;
+                font-size: 17px; /* ↑ was 16px */
+            }
+
+            body {
+                background: var(--bg);
+                color: var(--text);
+                font-family: var(--sans);
+                font-weight: 400;
+                line-height: 1.75; /* ↑ was 1.7 */
+                -webkit-font-smoothing: antialiased;
+            }
+
+            a {
+                color: var(--link);
+            }
+
+            /* ── NAV ─────────────────────────────────────────── */
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                background: rgba(246, 243, 238, 0.88);
+                backdrop-filter: blur(14px);
+                border-bottom: 1px solid var(--border);
+                height: 58px; /* ↑ was 54px */
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 2.5rem;
+            }
+            .nav-logo {
+                font-family: var(--mono);
+                font-size: 0.8rem; /* ↑ was 0.75rem */
+                letter-spacing: 0.1em;
+                color: var(--accent);
+                text-decoration: none;
+                font-weight: 400;
+            }
+            .nav-links {
+                list-style: none;
+                display: flex;
+                gap: 2rem;
+            }
+            .nav-links a {
+                font-size: 0.82rem; /* ↑ was 0.78rem */
+                font-weight: 500;
+                color: var(--muted);
+                text-decoration: none;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                transition: color 0.18s;
+            }
+            .nav-links a:hover {
+                color: var(--accent);
+            }
+
+            /* ── CONTAINER ───────────────────────────────────── */
+            .wrap {
+                max-width: var(--w);
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            /* ── HERO ────────────────────────────────────────── */
+            .hero {
+                padding: 7.5rem 2rem 4.5rem;
+                max-width: var(--w);
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 172px 1fr;
+                gap: 3rem;
+                align-items: start;
+            }
+            .hero-photo {
+                width: 160px;
+                height: 160px;
+                border-radius: 50%;
+                object-fit: cover;
+                object-position: top center;
+                border: 3px solid var(--border);
+                filter: sepia(10%) contrast(1.06);
+                animation: fadeUp 0.55s 0.1s ease both;
+            }
+            .hero-text {
+                animation: fadeUp 0.55s 0.22s ease both;
+            }
+            .hero-label {
+                font-family: var(--mono);
+                font-size: 0.76rem; /* ↑ was 0.72rem */
+                color: var(--accent);
+                letter-spacing: 0.06em;
+                margin-bottom: 0.7rem;
+            }
+            .hero-name {
+                font-family: var(--serif);
+                font-size: 2.65rem;
+                font-weight: 700;
+                color: var(--heading);
+                line-height: 1.12;
+                margin-bottom: 0.45rem;
+            }
+            .hero-affil {
+                font-size: 0.95rem; /* ↑ was 0.88rem */
+                color: var(--muted);
+                margin-bottom: 1.2rem;
+            }
+            .hero-affil strong {
+                color: var(--text);
+                font-weight: 600;
+            }
+            .hero-bio {
+                font-size: 1.02rem; /* ↑ was 1rem */
+                line-height: 1.82; /* ↑ was 1.78 */
+                color: var(--text);
+                margin-bottom: 1.5rem;
+            }
+            .hero-links {
+                display: flex;
+                gap: 0.75rem;
+                flex-wrap: wrap;
+            }
+            .hero-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.35rem;
+                font-family: var(--mono);
+                font-size: 0.76rem; /* ↑ was 0.72rem */
+                letter-spacing: 0.04em;
+                color: var(--link);
+                border: 1px solid var(--link);
+                padding: 0.35rem 0.95rem; /* ↑ was 0.3rem 0.85rem */
+                border-radius: 2px;
+                text-decoration: none;
+                transition: all 0.18s;
+            }
+            .hero-btn:hover {
+                background: var(--link);
+                color: #fff;
+            }
+
+            /* ── SECTION SHELL ───────────────────────────────── */
+            section {
+                padding: 4rem 0; /* ↑ was 3.75rem */
+                border-top: 1px solid var(--border);
+            }
+            .section-label {
+                font-family: var(--mono);
+                font-size: 0.74rem; /* ↑ was 0.68rem */
+                color: var(--accent);
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 0.5rem;
+            }
+            .section-label::after {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: var(--border);
+            }
+            .section-title {
+                font-family: var(--serif);
+                font-size: 1.95rem;
+                font-weight: 600;
+                color: var(--heading);
+                margin-bottom: 2rem;
+                line-height: 1.2;
+            }
+
+            /* ── RESEARCH INTERESTS ──────────────────────────── */
+            .interests-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .interest-card {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 3px;
+                padding: 1.35rem 1.5rem; /* ↑ slightly */
+                position: relative;
+                overflow: hidden;
+                transition:
+                    border-color 0.18s,
+                    box-shadow 0.18s;
+            }
+            .interest-card::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 3px;
+                background: var(--accent);
+            }
+            .interest-card:hover {
+                border-color: var(--accent);
+                box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+            }
+            .interest-card h3 {
+                font-family: var(--serif);
+                font-size: 1.12rem; /* ↑ was 1.08rem */
+                font-weight: 600;
+                color: var(--heading);
+                margin-bottom: 0.35rem;
+            }
+            .interest-card p {
+                font-size: 0.92rem; /* ↑ was 0.86rem */
+                color: var(--muted);
+                line-height: 1.6;
+            }
+
+            /* ── PUBLICATIONS ────────────────────────────────── */
+            .pub-list {
+                display: flex;
+                flex-direction: column;
+                gap: 1.25rem;
+            }
+            .pub-item {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 3px;
+                padding: 1.5rem 1.6rem; /* ↑ was 1.4rem 1.5rem */
+                transition: border-color 0.18s;
+            }
+            .pub-item:hover {
+                border-color: var(--accent);
+            }
+            .pub-venue {
+                font-family: var(--mono);
+                font-size: 0.74rem; /* ↑ was 0.68rem */
+                color: var(--accent);
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin-bottom: 0.5rem;
+            }
+            .pub-title {
+                font-family: var(--serif);
+                font-size: 1.18rem; /* ↑ was 1.12rem */
+                font-weight: 600;
+                color: var(--heading);
+                line-height: 1.4;
+                margin-bottom: 0.45rem;
+            }
+            .pub-authors {
+                font-size: 0.92rem; /* ↑ was 0.86rem */
+                color: var(--muted);
+                margin-bottom: 0.85rem;
+            }
+            .pub-authors strong {
+                color: var(--text);
+                font-weight: 600;
+            }
+            .pub-badge {
+                display: inline-block;
+                font-family: var(--mono);
+                font-size: 0.67rem; /* ↑ was 0.62rem */
+                background: var(--accent);
+                color: #fff;
+                padding: 0.14rem 0.55rem;
+                border-radius: 2px;
+                margin-left: 0.65rem;
+                vertical-align: middle;
+                letter-spacing: 0.05em;
+            }
+            .pub-link {
+                font-family: var(--mono);
+                font-size: 0.78rem; /* ↑ was 0.73rem */
+                color: var(--link);
+                text-decoration: none;
+                letter-spacing: 0.02em;
+                transition: color 0.15s;
+            }
+            .pub-link:hover {
+                text-decoration: underline;
+            }
+
+            /* ── TIMELINE ────────────────────────────────────── */
+            .timeline {
+                position: relative;
+                padding-left: 2rem;
+            }
+            .timeline::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 8px;
+                bottom: 8px;
+                width: 1px;
+                background: var(--timeline);
+            }
+            .timeline-item {
+                position: relative;
+                padding-bottom: 2.6rem; /* ↑ was 2.4rem */
+            }
+            .timeline-item:last-child {
+                padding-bottom: 0;
+            }
+            .timeline-item::before {
+                content: "";
+                position: absolute;
+                left: -2rem;
+                top: 8px;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--accent);
+                border: 2px solid var(--bg);
+                outline: 1px solid var(--accent);
+            }
+            .timeline-meta {
+                display: flex;
+                align-items: center;
+                gap: 0.85rem;
+                margin-bottom: 0.4rem;
+                flex-wrap: wrap;
+            }
+            .tl-date {
+                font-family: var(--mono);
+                font-size: 0.75rem; /* ↑ was 0.7rem */
+                color: var(--muted);
+                letter-spacing: 0.04em;
+            }
+            .tl-badge {
+                font-family: var(--mono);
+                font-size: 0.67rem; /* ↑ was 0.62rem */
+                padding: 0.12rem 0.52rem;
+                border-radius: 2px;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+            }
+            .badge-active {
+                background: var(--green-bg);
+                color: var(--green-txt);
+                border: 1px solid var(--green-bdr);
+            }
+            .badge-done {
+                background: var(--surface);
+                color: var(--muted);
+                border: 1px solid var(--border);
+            }
+            .badge-pub {
+                background: #e8f0f8;
+                color: var(--link);
+                border: 1px solid #b3c9e8;
+            }
+
+            .tl-title {
+                font-family: var(--serif);
+                font-size: 1.22rem; /* ↑ was 1.18rem */
+                font-weight: 600;
+                color: var(--heading);
+                margin-bottom: 0.2rem;
+                line-height: 1.3;
+            }
+            .tl-org {
+                font-size: 0.92rem; /* ↑ was 0.875rem */
+                color: var(--link);
+                margin-bottom: 0.8rem;
+            }
+            .tl-body {
+                font-size: 0.95rem; /* ↑ was 0.895rem */
+                color: var(--text);
+            }
+            .tl-body ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 0.35rem;
+            }
+            .tl-body ul li {
+                padding-left: 1.3rem;
+                position: relative;
+                line-height: 1.65;
+            }
+            .tl-body ul li::before {
+                content: "—";
+                position: absolute;
+                left: 0;
+                color: var(--accent);
+                font-size: 0.82rem;
+            }
+
+            /* ── PROJECT CARDS ───────────────────────────────── */
+            .projects-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .project-card {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 3px;
+                padding: 1.5rem; /* ↑ was 1.4rem */
+                text-decoration: none;
+                color: inherit;
+                display: flex;
+                flex-direction: column;
+                transition: all 0.2s;
+                position: relative;
+                overflow: hidden;
+            }
+            .project-card:hover {
+                border-color: var(--accent);
+                transform: translateY(-2px);
+                box-shadow: 0 5px 22px rgba(0, 0, 0, 0.09);
+            }
+            .pc-type {
+                font-family: var(--mono);
+                font-size: 0.72rem; /* ↑ was 0.66rem */
+                color: var(--accent);
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                margin-bottom: 0.6rem;
+            }
+            .pc-title {
+                font-family: var(--serif);
+                font-size: 1.14rem; /* ↑ was 1.08rem */
+                font-weight: 600;
+                color: var(--heading);
+                line-height: 1.35;
+                margin-bottom: 0.5rem;
+            }
+            .pc-desc {
+                font-size: 0.92rem; /* ↑ was 0.855rem */
+                color: var(--muted);
+                line-height: 1.65;
+                flex: 1;
+                margin-bottom: 1rem;
+            }
+            .pc-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.42rem;
+            }
+            .tag {
+                font-family: var(--mono);
+                font-size: 0.69rem; /* ↑ was 0.63rem */
+                background: var(--tag-bg);
+                color: var(--muted);
+                padding: 0.22rem 0.58rem; /* ↑ slightly taller */
+                border-radius: 2px;
+                letter-spacing: 0.02em;
+            }
+
+            /* ── SKILLS ──────────────────────────────────────── */
+            .skills-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem 2.5rem;
+            }
+            .skill-group h3 {
+                font-family: var(--mono);
+                font-size: 0.74rem; /* ↑ was 0.68rem */
+                color: var(--accent);
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                margin-bottom: 0.75rem;
+                padding-bottom: 0.4rem;
+                border-bottom: 1px solid var(--border);
+            }
+            .skill-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.42rem;
+            }
+
+            /* ── COURSEWORK ───────────────────────────────────── */
+            .coursework-intro {
+                font-size: 1rem; /* ↑ was 0.95rem */
+                color: var(--muted);
+                line-height: 1.8;
+                margin-bottom: 2rem;
+                max-width: 640px;
+            }
+            .coursework-clusters {
+                display: flex;
+                flex-direction: column;
+                gap: 0.85rem;
+            }
+            .cluster {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 3px;
+                padding: 1.4rem 1.6rem; /* ↑ was 1.3rem 1.5rem */
+                display: grid;
+                grid-template-columns: 200px 1fr;
+                gap: 1.25rem;
+                align-items: start;
+                transition: border-color 0.18s;
+            }
+            .cluster:hover {
+                border-color: var(--accent);
+            }
+            .cluster-label {
+                font-family: var(--mono);
+                font-size: 0.74rem; /* ↑ was 0.68rem */
+                color: var(--accent);
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                line-height: 1.5;
+                padding-top: 0.1rem;
+            }
+            .cluster-label span {
+                display: block;
+                font-family: var(--sans);
+                font-size: 0.84rem; /* ↑ was 0.78rem */
+                color: var(--muted);
+                text-transform: none;
+                letter-spacing: 0;
+                margin-top: 0.2rem;
+                font-style: italic;
+            }
+            .cluster-courses {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.45rem;
+            }
+            .course-tag {
+                font-family: var(--mono);
+                font-size: 0.69rem; /* ↑ was 0.63rem */
+                background: var(--tag-bg);
+                color: var(--text);
+                padding: 0.26rem 0.65rem; /* ↑ was 0.22rem 0.6rem */
+                border-radius: 2px;
+                letter-spacing: 0.02em;
+                border: 1px solid transparent;
+                transition:
+                    border-color 0.15s,
+                    background 0.15s;
+            }
+            .course-tag:hover {
+                border-color: var(--accent);
+                background: #f0ebe2;
+            }
+            .course-tag.kth {
+                background: #e8f0f8;
+                color: var(--link);
+            }
+            .course-tag.kth:hover {
+                border-color: var(--link);
+                background: #dceaf7;
+            }
+
+            /* ── TEACHING ─────────────────────────────────────── */
+            .teaching-item {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 3px;
+                padding: 1.4rem 1.5rem; /* ↑ slightly */
+                display: flex;
+                justify-content: space-between;
+                align-items: start;
+                gap: 1rem;
+            }
+            .teaching-item h3 {
+                font-family: var(--serif);
+                font-size: 1.1rem; /* ↑ was 1.05rem */
+                font-weight: 600;
+                color: var(--heading);
+                margin-bottom: 0.3rem;
+            }
+            .teaching-item p {
+                font-size: 0.92rem; /* ↑ was 0.875rem */
+                color: var(--muted);
+            }
+            .teaching-date {
+                font-family: var(--mono);
+                font-size: 0.74rem; /* ↑ was 0.68rem */
+                color: var(--muted);
+                white-space: nowrap;
+                margin-top: 0.2rem;
+            }
+
+            /* ── FOOTER ──────────────────────────────────────── */
+            footer {
+                border-top: 1px solid var(--border);
+                padding: 2.5rem 0;
+                text-align: center;
+            }
+            .footer-name {
+                font-family: var(--serif);
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: var(--heading);
+                margin-bottom: 0.6rem;
+            }
+            .footer-links {
+                display: flex;
+                justify-content: center;
+                gap: 1.75rem;
+                margin-bottom: 0.85rem;
+            }
+            .footer-links a {
+                font-family: var(--mono);
+                font-size: 0.75rem; /* ↑ was 0.7rem */
+                color: var(--muted);
+                text-decoration: none;
+                letter-spacing: 0.05em;
+                transition: color 0.16s;
+            }
+            .footer-links a:hover {
+                color: var(--accent);
+            }
+            .footer-note {
+                font-size: 0.82rem; /* ↑ was 0.78rem */
+                color: var(--muted);
+            }
+
+            /* ── ANIMATIONS ──────────────────────────────────── */
+            @keyframes fadeUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(14px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* ── RESPONSIVE ──────────────────────────────────── */
+            @media (max-width: 640px) {
+                html {
+                    font-size: 17px; /* consistent on mobile too */
+                }
+                .hero {
+                    grid-template-columns: 1fr;
+                    text-align: center;
+                    padding-top: 5.5rem;
+                    padding-left: 1.25rem; /* ↑ tighter side padding on mobile */
+                    padding-right: 1.25rem;
+                }
+                .wrap {
+                    padding: 0 1.25rem; /* ↑ was 0 2rem — more breathing room on mobile */
+                }
+                .hero-photo {
+                    margin: 0 auto;
+                }
+                .hero-links {
+                    justify-content: center;
+                }
+                .interests-grid,
+                .projects-grid,
+                .skills-grid {
+                    grid-template-columns: 1fr;
+                }
+                .nav-links {
+                    display: none;
+                }
+                .hero-name {
+                    font-size: 2.2rem; /* ↑ was 2.1rem */
+                }
+                .cluster {
+                    grid-template-columns: 1fr;
+                    gap: 0.75rem;
+                }
+                /* Bigger tap targets for tags on mobile */
+                .tag,
+                .course-tag {
+                    padding: 0.3rem 0.65rem;
+                    font-size: 0.74rem; /* ↑ more readable on small screens */
+                }
+                .tl-body {
+                    font-size: 0.98rem;
+                }
+                /* Teaching: stack date below content on mobile */
+                .teaching-item {
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+                .hero-label {
+                    font-size: 0.78rem;
+                }
+                .pub-item,
+                .project-card {
+                    padding: 1.25rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ── NAVIGATION ────────────────────────────────────── -->
+        <nav>
+            <a href="#" class="nav-logo">ARG_</a>
+            <ul class="nav-links">
+                <li><a href="#research">Research</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#coursework">Coursework</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+        </nav>
+
+        <!-- ── HERO ──────────────────────────────────────────── -->
+        <div class="hero">
+            <img src="projects/pfp3.jpg" alt="Adithyaa RG" class="hero-photo" />
+            <div class="hero-text">
+                <p class="hero-label">
+                    // robotics &middot; reinforcement learning &middot; theory
+                    of learning machines
+                </p>
+                <h1 class="hero-name">Adithyaa Rettaikudi<br />Gurumoorthi</h1>
+                <p class="hero-affil">
+                    <strong>Dual Degree</strong> &mdash; B.Tech Engineering
+                    Design + M.Tech Robotics &nbsp;&middot;&nbsp;
+                    <strong>IIT Madras</strong> &nbsp;&middot;&nbsp; CGPA
+                    9.05/10
+                </p>
+                <p class="hero-bio">
+                    I am a final-year student at IIT Madras interested in
+                    reinforcement learning, learning-based robot control, and
+                    the theoretical foundations of machine learning. My current
+                    research focuses on state-only imitation learning for agents
+                    with mismatched dynamics. I also spent a semester at KTH
+                    Stockholm &mdash; one of the most formative experiences of
+                    my life. Outside the lab, I love cinema, cooking, and
+                    chasing sunsets.
+                </p>
+                <div class="hero-links">
+                    <a href="mailto:adithyaa.off@gmail.com" class="hero-btn"
+                        >✉&nbsp;Email</a
+                    >
+                    <a
+                        href="https://linkedin.com/in/adithyaa-rg"
+                        class="hero-btn"
+                        target="_blank"
+                        >LinkedIn</a
+                    >
+                    <a
+                        href="https://github.com/adithyaa-rg"
+                        class="hero-btn"
+                        target="_blank"
+                        >GitHub</a
+                    >
+                    <a
+                        href="https://scholar.google.com/citations?user=k9f5SCYAAAAJ&hl=en&authuser=2"
+                        class="hero-btn"
+                        target="_blank"
+                        >Scholar</a
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- ── RESEARCH INTERESTS ─────────────────────────────── -->
+        <section id="research">
+            <div class="wrap">
+                <p class="section-label">01&nbsp;/&nbsp;research interests</p>
+                <h2 class="section-title">What I Think About</h2>
+                <div class="interests-grid">
+                    <div class="interest-card">
+                        <h3>Reinforcement Learning &amp; Optimal Control</h3>
+                        <p>
+                            Theoretical foundations of RL, optimal control
+                            theory, and their interplay for building capable
+                            autonomous systems.
+                        </p>
+                    </div>
+                    <div class="interest-card">
+                        <h3>Learning from Demonstrations</h3>
+                        <p>
+                            Imitation Learning and Learning from Observations
+                            for manipulation, quadrupeds, and humanoids &mdash;
+                            especially across dynamic mismatches.
+                        </p>
+                    </div>
+                    <div class="interest-card">
+                        <h3>Robot Autonomy &amp; Planning</h3>
+                        <p>
+                            Motion planning, trajectory tracking, and control
+                            for autonomous vehicles and legged robots in
+                            real-world, unstructured environments.
+                        </p>
+                    </div>
+                    <div class="interest-card">
+                        <h3>Theoretical Machine Learning</h3>
+                        <p>
+                            Probabilistic modelling, density estimation, and
+                            principled algorithmic approaches to learning
+                            problems in ML.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── PUBLICATIONS ───────────────────────────────────── -->
+        <section id="publications">
+            <div class="wrap">
+                <p class="section-label">02&nbsp;/&nbsp;publications</p>
+                <h2 class="section-title">Published Work</h2>
+                <div class="pub-list">
+                    <div class="pub-item">
+                        <p class="pub-venue">
+                            Computers &amp; Graphics &mdash; 2025
+                        </p>
+                        <p class="pub-title">
+                            De(l)Noise: A Delaunay-Based Point Cloud Denoising
+                            Algorithm
+                        </p>
+                        <p class="pub-authors">
+                            M Reghunath, K Muralidharan,
+                            <strong>A R Gurumoorthi</strong> et al.
+                        </p>
+                        <a
+                            href="https://www.sciencedirect.com/science/article/pii/S0097849325001517"
+                            class="pub-link"
+                            target="_blank"
+                            >&#8594;&nbsp;View paper</a
+                        >
+                    </div>
+                    <div class="pub-item">
+                        <p class="pub-venue">STPEC 2025</p>
+                        <p class="pub-title">
+                            Interactive Steering for Seamless Transition During
+                            Control Handover in Autonomous Driving
+                        </p>
+                        <p class="pub-authors">
+                            <strong>A R Gurumoorthi</strong>, V Bagaria, B
+                            Sebastian
+                        </p>
+                        <a
+                            href="https://ieeexplore.ieee.org/document/11490991"
+                            class="pub-link"
+                            target="_blank"
+                            >&#8594;&nbsp;View paper</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── EXPERIENCE ─────────────────────────────────────── -->
+        <section id="experience">
+            <div class="wrap">
+                <p class="section-label">03&nbsp;/&nbsp;experience</p>
+                <h2 class="section-title">Research &amp; Industry</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-meta">
+                            <span class="tl-date"
+                                >Aug 2025 &ndash; Present</span
+                            >
+                            <span class="tl-badge badge-active"
+                                >In Experimentation and Writing</span
+                            >
+                        </div>
+                        <h3 class="tl-title">
+                            Learning from Demonstration for Agents: State only
+                            Imitation Learning
+                        </h3>
+                        <p class="tl-org">
+                            Center for Responsible AI (CeRAI), IIT Madras
+                            &nbsp;&middot;&nbsp; Advisor: Prof. B Ravindran,
+                            Prof. Nirav Bhatt
+                        </p>
+                        <div class="tl-body">
+                            <ul>
+                                <li>
+                                    Formulating algorithms for state-only
+                                    imitation learning where imitator and expert
+                                    have different dynamics
+                                </li>
+                                <li>
+                                    Density estimation to identify useful
+                                    transitions and assign rewards in the
+                                    imitator dataset
+                                </li>
+                                <li>
+                                    Sub-trajectory sampling via state sequence
+                                    likelihoods; implementing Weighted Behaviour
+                                    Cloning
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-meta">
+                            <span class="tl-date">May &ndash; Jul 2025</span>
+                            <span class="tl-badge badge-done">Completed</span>
+                        </div>
+                        <h3 class="tl-title">
+                            Computer Vision &amp; Planning Engineer Intern
+                        </h3>
+                        <p class="tl-org">Embodied AI &mdash; Ola Krutrim</p>
+                        <div class="tl-body">
+                            <ul>
+                                <li>
+                                    Built a full planning and control pipeline
+                                    for a 4W ADAS system using SMAC Planner +
+                                    MPPI Controller on Nav2/ROS2
+                                </li>
+                                <li>
+                                    Evaluated in NVIDIA Isaac Sim; on-ground
+                                    validation on Honda City tracking
+                                    pre-defined trajectories
+                                </li>
+                                <li>
+                                    LIDAR-camera fusion pipeline across five
+                                    cameras to generate costmaps for local
+                                    planning
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-meta">
+                            <span class="tl-date"
+                                >Jul 2024 &ndash; Jan 2025</span
+                            >
+                            <span class="tl-badge badge-pub">Published</span>
+                        </div>
+                        <h3 class="tl-title">
+                            User Study: Human Takeover Steering System
+                        </h3>
+                        <p class="tl-org">
+                            Autonomous Systems Lab, IIT Madras
+                            &nbsp;&middot;&nbsp; Advisor: Prof. Bijo Sebastian
+                        </p>
+                        <div class="tl-body">
+                            <ul>
+                                <li>
+                                    Designed and built a custom CubeMars AK-80
+                                    motor-based interactive steering system for
+                                    AV control handover
+                                </li>
+                                <li>
+                                    Torque and position control modes;
+                                    potentiometer-driven accelerator and brake
+                                    modules
+                                </li>
+                                <li>
+                                    15-user study assessing human steering
+                                    behaviour and takeover effectiveness &mdash;
+                                    paper accepted
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-meta">
+                            <span class="tl-date"
+                                >Dec 2023 &ndash; Oct 2024</span
+                            >
+                            <span class="tl-badge badge-pub">Published</span>
+                        </div>
+                        <h3 class="tl-title">
+                            Delaunay Triangulation-Aided Point Cloud Denoising
+                        </h3>
+                        <p class="tl-org">
+                            Advanced Geometric Computational Lab, IIT Madras
+                            &nbsp;&middot;&nbsp; Advisor: Prof. Ramanathan M
+                        </p>
+                        <div class="tl-body">
+                            <ul>
+                                <li>
+                                    Noise and outlier removal for 3D point
+                                    clouds via Delaunay triangulation and curve
+                                    fitting
+                                </li>
+                                <li>
+                                    Delaunay-based clustering to aid MLS surface
+                                    fitting and PCA-based feature extraction
+                                </li>
+                                <li>
+                                    Benchmarked against deep learning and
+                                    optimisation-based methods on synthetic
+                                    datasets
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-meta">
+                            <span class="tl-date">Apr &ndash; Jul 2023</span>
+                            <span class="tl-badge badge-done">Completed</span>
+                        </div>
+                        <h3 class="tl-title">
+                            Reward &amp; Environment Design for a Rehabilitation
+                            Leg
+                        </h3>
+                        <p class="tl-org">
+                            GAMMA Lab, IIT Madras &nbsp;&middot;&nbsp; Advisor:
+                            Prof. Sourav Rakshit
+                        </p>
+                        <div class="tl-body">
+                            <ul>
+                                <li>
+                                    MuJoCo simulation environment for a
+                                    post-treatment exoskeleton leg with custom
+                                    reward distribution
+                                </li>
+                                <li>
+                                    Trajectory tracking tested with ME-TRPO and
+                                    SAC algorithms
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── PROJECTS ───────────────────────────────────────── -->
+        <section id="projects">
+            <div class="wrap">
+                <p class="section-label">04&nbsp;/&nbsp;projects</p>
+                <h2 class="section-title">Selected Projects</h2>
+                <div class="projects-grid">
+                    <a
+                        href="projects/learning_from_demon.html"
+                        class="project-card"
+                    >
+                        <span class="pc-type"
+                            >Research &mdash; In Experimentation and
+                            Writing</span
+                        >
+                        <h3 class="pc-title">
+                            Learning from Observations &mdash; State only
+                            Imitation Learning
+                        </h3>
+                        <p class="pc-desc">
+                            State-only imitation learning for imitator agents
+                            with different dynamics than the demonstrator.
+                            Density estimation, sub-trajectory scoring, and
+                            weighted behaviour cloning.
+                        </p>
+                        <div class="pc-tags">
+                            <span class="tag">Imitation Learning</span>
+                            <span class="tag">RL</span>
+                            <span class="tag">Density Estimation</span>
+                            <span class="tag">PyTorch</span>
+                        </div>
+                    </a>
+
+                    <a href="projects/ola_krutrim.html" class="project-card">
+                        <span class="pc-type"
+                            >Industry &mdash; Ola Krutrim</span
+                        >
+                        <h3 class="pc-title">ADAS Planning Pipeline</h3>
+                        <p class="pc-desc">
+                            End-to-end planning and control for a 4W autonomous
+                            system. SMAC + MPPI on Nav2/ROS2, LIDAR-camera
+                            fusion, and on-road validation on a Honda City.
+                        </p>
+                        <div class="pc-tags">
+                            <span class="tag">ROS2</span
+                            ><span class="tag">Nav2</span>
+                            <span class="tag">MPPI</span
+                            ><span class="tag">NVIDIA Isaac</span>
+                        </div>
+                    </a>
+
+                    <a
+                        href="projects/user_study_steering.html"
+                        class="project-card"
+                    >
+                        <span class="pc-type">Research &mdash; Published</span>
+                        <h3 class="pc-title">Human Takeover Steering System</h3>
+                        <p class="pc-desc">
+                            Custom CubeMars AK-80 motor-based interactive
+                            steering for autonomous vehicle handover. Full
+                            hardware build, control implementation, and a
+                            15-user study.
+                        </p>
+                        <div class="pc-tags">
+                            <span class="tag">Hardware</span
+                            ><span class="tag">Controls</span>
+                            <span class="tag">User Study</span>
+                        </div>
+                    </a>
+
+                    <a
+                        href="projects/delaunay_denoising.html"
+                        class="project-card"
+                    >
+                        <span class="pc-type"
+                            >Published &mdash; Computers &amp; Graphics
+                            2025</span
+                        >
+                        <h3 class="pc-title">
+                            Delaunay-Based Point Cloud Denoising
+                        </h3>
+                        <p class="pc-desc">
+                            Novel noise-removal algorithm for 3D point clouds
+                            using Delaunay triangulation, Moving Least Squares
+                            fitting, and PCA. Outperforms several deep learning
+                            baselines.
+                        </p>
+                        <div class="pc-tags">
+                            <span class="tag">3D Vision</span
+                            ><span class="tag">Geometry</span>
+                            <span class="tag">CGAL</span
+                            ><span class="tag">Open3D</span>
+                        </div>
+                    </a>
+
+                    <a href="projects/battlesnakes.html" class="project-card">
+                        <span class="pc-type"
+                            >Course Project &mdash; KTH DD2438</span
+                        >
+                        <h3 class="pc-title">
+                            Multi-Agent RL for Battlesnakes
+                        </h3>
+                        <p class="pc-desc">
+                            PPO and DQN agents with custom reward shaping and
+                            curriculum learning. Constrained team-level policy
+                            divergence and conducted failure analysis on replay
+                            buffer sampling.
+                        </p>
+                        <div class="pc-tags">
+                            <span class="tag">PPO</span
+                            ><span class="tag">DQN</span>
+                            <span class="tag">Multi-Agent</span
+                            ><span class="tag">Curriculum RL</span>
+                        </div>
+                    </a>
+
+                    <a href="projects/hybrid_astar.html" class="project-card">
+                        <span class="pc-type"
+                            >Course Project &mdash; KTH DD2438 &nbsp;&#x1F3C6;
+                            3rd Place</span
+                        >
+                        <h3 class="pc-title">Greedy Multi-Agent Hybrid A*</h3>
+                        <p class="pc-desc">
+                            Greedy prioritised Hybrid A* for multi-agent,
+                            multi-target path planning. Forward-backward
+                            velocity profiling, PID tracking for cars and
+                            drones. Placed 3rd in class competition.
+                        </p>
+                        <div class="pc-tags">
+                            <span class="tag">Motion Planning</span
+                            ><span class="tag">Hybrid A*</span>
+                            <span class="tag">PID</span
+                            ><span class="tag">Velocity Profiling</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── EDUCATION ──────────────────────────────────────── -->
+        <section id="education">
+            <div class="wrap">
+                <p class="section-label">05&nbsp;/&nbsp;education</p>
+                <h2 class="section-title">Academic Background</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-meta">
+                            <span class="tl-date">Jan &ndash; Jun 2025</span>
+                            <span class="tl-badge badge-done">Completed</span>
+                        </div>
+                        <h3 class="tl-title">
+                            Semester Exchange &mdash; Masters in Computer
+                            Science
+                        </h3>
+                        <p class="tl-org">
+                            KTH Royal Institute of Technology, Stockholm
+                            &nbsp;&middot;&nbsp; GPA: 9/10
+                        </p>
+                        <div class="tl-body">
+                            <p>
+                                Coursework in Multi-Agent Systems &amp; AI and
+                                Artificial Neural Networks &amp; Deep
+                                Architectures. One of the most formative
+                                chapters of my life &mdash; research,
+                                exploration, and a deep connection with nature
+                                across Scandinavia and Europe.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-meta">
+                            <span class="tl-date"
+                                >Nov 2021 &ndash; Jul 2026</span
+                            >
+                            <span class="tl-badge badge-active">Ongoing</span>
+                        </div>
+                        <h3 class="tl-title">
+                            Dual Degree &mdash; B.Tech Engineering Design +
+                            M.Tech Robotics
+                        </h3>
+                        <p class="tl-org">
+                            Indian Institute of Technology Madras
+                            &nbsp;&middot;&nbsp; CGPA: 9.05/10
+                        </p>
+                        <div class="tl-body">
+                            <p>
+                                Five-year integrated programme spanning
+                                mechanical design, robotics, control theory,
+                                computational geometry, reinforcement learning,
+                                and motion planning.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ── TEACHING ───────────────────────────────────────── -->
+        <section id="teaching">
+            <div class="wrap">
+                <p class="section-label">06&nbsp;/&nbsp;teaching</p>
+                <h2 class="section-title">Teaching Assistantship</h2>
+                <div class="teaching-item">
+                    <div>
+                        <h3>Design of Mechanical Systems 1 &mdash; ED2011</h3>
+                        <p>
+                            IIT Madras &nbsp;&middot;&nbsp; Advisor: Prof.
+                            Srikanth Vedantam
+                        </p>
+                        <p
+                            style="
+                                font-size: 0.92rem;
+                                color: var(--muted);
+                                margin-top: 0.4rem;
+                            "
+                        >
+                            Created assignments on Hooke&rsquo;s Law, Beam
+                            Bending, Torsion, and Buckling. Conducted
+                            interactive tutorial sessions for theoretical
+                            concepts and problem-solving.
+                        </p>
+                    </div>
+                    <span class="teaching-date">Aug &ndash; Nov 2025</span>
+                </div>
+                <div class="teaching-item" style="margin-top: 1rem">
+                    <div>
+                        <h3>
+                            Data Science - Theory and Practice &mdash; ED5340
+                        </h3>
+                        <p>
+                            IIT Madras &nbsp;&middot;&nbsp; Advisor: Prof.
+                            Ramanathan Muthuganapathy
+                        </p>
+                        <p
+                            style="
+                                font-size: 0.92rem;
+                                color: var(--muted);
+                                margin-top: 0.4rem;
+                            "
+                        >
+                            Helped in creating and conducting tutorials and
+                            laboratory sessions. Primarily involved in
+                            conducting sessions on Basic Python Programming and
+                            Machine Learning Fundamentals including Regression
+                            (Linear and Polynomial), SVM, PCA and Clustering.
+                        </p>
+                    </div>
+                    <span class="teaching-date">Jan &ndash; May 2026</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── COURSEWORK ─────────────────────────────────────── -->
+        <section id="coursework">
+            <div class="wrap">
+                <p class="section-label">07&nbsp;/&nbsp;coursework</p>
+                <h2 class="section-title">Relevant Coursework</h2>
+                <p class="coursework-intro">
+                    A selection of courses across my five years at IIT Madras
+                    and my exchange semester at KTH Stockholm, organised by
+                    theme. Courses taken at KTH are marked in blue.
+                </p>
+                <div class="coursework-clusters">
+                    <div class="cluster">
+                        <div class="cluster-label">
+                            Reinforcement Learning &amp; Decision Making
+                            <span>The core of my research interests</span>
+                        </div>
+                        <div class="cluster-courses">
+                            <span class="course-tag"
+                                >Reinforcement Learning</span
+                            >
+                            <span class="course-tag kth"
+                                >Multi-Agent Systems &amp; AI</span
+                            >
+                            <span class="course-tag"
+                                >Recent Advances in Reinforcement Learning</span
+                            >
+                            <span class="course-tag"
+                                >Introduction to Probability and
+                                Statistics</span
+                            >
+                            <span class="course-tag"
+                                >Introduction to Motion Planning</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="cluster">
+                        <div class="cluster-label">
+                            Robotics &amp; Control
+                            <span>Control theory and robot dynamics</span>
+                        </div>
+                        <div class="cluster-courses">
+                            <span class="course-tag"
+                                >Modern Control Theory</span
+                            >
+                            <span class="course-tag"
+                                >Nonlinear System Analysis</span
+                            >
+                            <span class="course-tag"
+                                >Mechanics of Serial Robots</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="cluster">
+                        <div class="cluster-label">
+                            Machine Learning &amp; Deep Learning
+                            <span>Theory and architecture</span>
+                        </div>
+                        <div class="cluster-courses">
+                            <span class="course-tag kth"
+                                >Artificial Neural Networks &amp; Deep
+                                Architectures</span
+                            >
+                            <span class="course-tag"
+                                >Machine Learning Techniques</span
+                            >
+                            <span class="course-tag"
+                                >Data Science &mdash; Theory &amp;
+                                Practice</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="cluster">
+                        <div class="cluster-label">
+                            Mathematics &amp; Computation
+                            <span>Foundations and geometry</span>
+                        </div>
+                        <div class="cluster-courses">
+                            <span class="course-tag"
+                                >Algorithms in Computational Geometry</span
+                            >
+                            <span class="course-tag"
+                                >Seires &amp; Matrices</span
+                            >
+                            <span class="course-tag"
+                                >Differential Equations</span
+                            >
+                            <span class="course-tag"
+                                >Introduction to Computation and
+                                Visualisation</span
+                            >
+                            <span class="course-tag"
+                                >Functions of Several Variables</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="cluster">
+                        <div class="cluster-label">
+                            Mechanical &amp; Systems Design
+                            <span>The engineering design core</span>
+                        </div>
+                        <div class="cluster-courses">
+                            <span class="course-tag"
+                                >Mechatronics Systems Design</span
+                            >
+                            <span class="course-tag"
+                                >Design of Mechanical Systems I &amp; II</span
+                            >
+                            <span class="course-tag"
+                                >Human Anatomy, Physiology &amp;
+                                Biomechanics</span
+                            >
+                            <span class="course-tag"
+                                >Introduction to Robotics &amp; Field and
+                                Service Robotics</span
+                            >
+                            <span class="course-tag"
+                                >Digital Signal Processing</span
+                            >
+                        </div>
+                    </div>
+                    <div class="cluster">
+                        <div class="cluster-label">
+                            Humanities &amp; Social Sciences
+                            <span>The non-tech courses</span>
+                        </div>
+                        <div class="cluster-courses">
+                            <span class="course-tag"
+                                >Introduction to Linguistics</span
+                            >
+                            <span class="course-tag">Linguistic Typology</span>
+                            <span class="course-tag"
+                                >State, Politics and Foreign Policy in
+                                China</span
+                            >
+                            <span class="course-tag"
+                                >Film Theory and Practice</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SKILLS ─────────────────────────────────────────── -->
+        <section id="skills">
+            <div class="wrap">
+                <p class="section-label">08&nbsp;/&nbsp;skills</p>
+                <h2 class="section-title">Technical Toolkit</h2>
+                <div class="skills-grid">
+                    <div class="skill-group">
+                        <h3>Languages</h3>
+                        <div class="skill-tags">
+                            <span class="tag">Python</span
+                            ><span class="tag">C / C++</span>
+                            <span class="tag">C#</span
+                            ><span class="tag">MATLAB</span>
+                            <span class="tag">Mathematica</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3>ML &amp; Robotics</h3>
+                        <div class="skill-tags">
+                            <span class="tag">PyTorch</span
+                            ><span class="tag">PyTorch Lightning</span>
+                            <span class="tag">ROS2 / ROS</span
+                            ><span class="tag">Nav2</span>
+                            <span class="tag">OpenAI Gym</span
+                            ><span class="tag">MuJoCo</span>
+                            <span class="tag">Open3D</span
+                            ><span class="tag">CGAL</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Tools &amp; Platforms</h3>
+                        <div class="skill-tags">
+                            <span class="tag">Linux</span
+                            ><span class="tag">Git</span>
+                            <span class="tag">NVIDIA Isaac</span
+                            ><span class="tag">Unity</span>
+                            <span class="tag">Fusion360</span
+                            ><span class="tag">Altium</span>
+                            <span class="tag">Arduino</span
+                            ><span class="tag">Figma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── FOOTER ─────────────────────────────────────────── -->
+        <footer>
+            <div class="wrap">
+                <p class="footer-name">Adithyaa Rettaikudi Gurumoorthi</p>
+                <div class="footer-links">
+                    <a href="mailto:adithyaa.off@gmail.com"
+                        >adithyaa.off@gmail.com</a
+                    >
+                    <a
+                        href="https://linkedin.com/in/adithyaa-rg"
+                        target="_blank"
+                        >LinkedIn</a
+                    >
+                    <a href="https://github.com/adithyaa-rg" target="_blank"
+                        >GitHub</a
+                    >
+                </div>
+                <p class="footer-note">
+                    Chennai, India &nbsp;&middot;&nbsp; IIT Madras
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

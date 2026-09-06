@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} — Adithyaa RG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #f6f3ee;
+      --surface: #edeae3;
+      --border:  #d4cdc2;
+      --text:    #1c1c28;
+      --muted:   #6a6278;
+      --heading: #0f0f1a;
+      --accent:  #b5452a;
+      --link:    #2e5a9c;
+      --tag-bg:  #e3dfd7;
+
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Source Sans 3', system-ui, sans-serif;
+      --mono:  'JetBrains Mono', 'Courier New', monospace;
+      --w: 760px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--sans); line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(246,243,238,0.88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      height: 54px; display: flex; align-items: center;
+      justify-content: space-between; padding: 0 2.5rem;
+    }
+    .nav-logo {
+      font-family: var(--mono); font-size: 0.75rem;
+      letter-spacing: 0.1em; color: var(--accent); text-decoration: none;
+    }
+    .nav-back {
+      font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
+      text-decoration: none; letter-spacing: 0.04em;
+      display: flex; align-items: center; gap: 0.4rem;
+      transition: color 0.15s;
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    /* CONTENT */
+    main {
+      max-width: var(--w); margin: 0 auto;
+      padding: 5.5rem 2rem 4rem;
+    }
+
+    .project-header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .project-type {
+      font-family: var(--mono); font-size: 0.68rem; color: var(--accent);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    .project-header h1 {
+      font-family: var(--serif); font-size: 2.2rem; font-weight: 700;
+      color: var(--heading); line-height: 1.15; margin-bottom: 0.5rem;
+    }
+    .project-meta {
+      font-size: 0.875rem; color: var(--muted);
+    }
+    .project-meta a { color: var(--link); text-decoration: none; }
+    .project-meta a:hover { text-decoration: underline; }
+
+    /* Markdown content styles */
+    .content h2 {
+      font-family: var(--serif); font-size: 1.65rem; font-weight: 600;
+      color: var(--heading); margin: 2.5rem 0 1rem;
+      padding-bottom: 0.4rem; border-bottom: 1px solid var(--border);
+    }
+    .content h3 {
+      font-family: var(--serif); font-size: 1.25rem; font-weight: 600;
+      color: var(--heading); margin: 1.75rem 0 0.6rem;
+    }
+    .content p {
+      font-size: 1rem; line-height: 1.78; margin-bottom: 1rem; color: var(--text);
+    }
+    .content ul, .content ol {
+      margin: 0.75rem 0 1rem 1.5rem; display: flex;
+      flex-direction: column; gap: 0.35rem;
+    }
+    .content li { font-size: 0.95rem; line-height: 1.65; }
+    .content a { color: var(--link); }
+    .content a:hover { text-decoration: underline; }
+    .content strong { font-weight: 600; color: var(--heading); }
+    .content em { font-style: italic; color: var(--muted); }
+    .content hr {
+      border: none; border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+    .content img {
+      max-width: 100%; border-radius: 4px;
+      border: 1px solid var(--border); margin: 1rem 0;
+    }
+    .content blockquote {
+      border-left: 3px solid var(--accent); padding: 0.75rem 1.25rem;
+      background: var(--surface); margin: 1.25rem 0; border-radius: 0 3px 3px 0;
+      font-style: italic; color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border); padding: 2rem 0;
+      text-align: center; margin-top: 1rem;
+    }
+    .footer-links {
+      display: flex; justify-content: center; gap: 1.75rem;
+    }
+    .footer-links a {
+      font-family: var(--mono); font-size: 0.7rem; color: var(--muted);
+      text-decoration: none; letter-spacing: 0.05em; transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">ARG_</a>
+  <a href="/" class="nav-back">&#8592;&nbsp;Back to home</a>
+</nav>
+
+<main>
+  <div class="content">
+    {{ content }}
+  </div>
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="mailto:adithyaa.off@gmail.com">adithyaa.off@gmail.com</a>
+    <a href="https://linkedin.com/in/adithyaa-rg" target="_blank">LinkedIn</a>
+    <a href="https://github.com/adithyaa-rg" target="_blank">GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>
