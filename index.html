@@ -130,7 +130,7 @@
         /* Profile header: always visible above every section, not a tab */
         .profile-header {
             display: grid;
-            grid-template-columns: 172px 1fr;
+            grid-template-columns: 220px 1fr;
             gap: var(--space-lg);
             align-items: center;
             padding-bottom: var(--space-lg);
@@ -139,8 +139,8 @@
         }
 
         .profile-photo {
-            width: 172px;
-            height: 172px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--bg-secondary);
@@ -194,7 +194,7 @@
             line-height: 1.8;
             color: var(--text-muted);
             margin-top: var(--space-sm);
-            max-width: 62ch;
+            /*max-width: 80ch;*/
         }
 
         .bio-text p + p {
@@ -395,6 +395,9 @@
         }
 
         .project-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-lg);
             padding: var(--space-sm) 0;
             border-bottom: 1px solid var(--border-soft);
         }
@@ -406,6 +409,14 @@
         .project-item:last-child {
             border-bottom: none;
             padding-bottom: 0;
+        }
+
+        /* Text side — grows to fill the space left by the media column,
+           but is capped so lines stay readable even with no media present */
+        .project-body {
+            flex: 1 1 360px;
+            min-width: 0;
+            max-width: 640px;
         }
 
         .project-header {
@@ -430,6 +441,26 @@
             font-style: italic;
             white-space: nowrap;
         }
+        .project-title {
+                    font-family: var(--font-heading);
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    color: var(--text);
+        }
+
+        /* Publications rows: the title is used as a label ("Journals",
+            "Conferences") — give it a fixed-width column so every row's
+            citation starts at the same x-position regardless of label length.
+            The ">" restricts this to Publications only, where project-title
+            sits directly inside project-item (no project-header wrapper). */
+        .project-item > .project-title {
+            flex: 0 0 160px;
+            max-width: 160px;
+        }
+
+        .project-item > .project-description {
+            flex: 1;
+        }
 
         .project-subtitle {
             font-size: 0.88rem;
@@ -443,7 +474,6 @@
             color: var(--text);
             line-height: 1.75;
             margin-bottom: var(--space-2xs);
-            max-width: 72ch;
         }
 
         .project-meta {
@@ -465,6 +495,45 @@
         .project-tags .tag:last-child::after {
             content: "";
             margin: 0;
+        }
+
+        /* Optional further-detail document link — plain text, not a button */
+        .project-link {
+            display: inline-block;
+            margin-top: var(--space-2xs);
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--accent-dark);
+            text-decoration: none;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Optional per-project media (image or video) — its own column so it
+           doesn't leave the text side stranded next to empty whitespace.
+           Only takes up space when a project actually includes a <figure class="project-media"> block */
+        .project-media {
+            flex: 1 1 340px;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+
+        .project-media img,
+        .project-media video {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .project-media figcaption {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: var(--space-2xs);
+            font-style: italic;
+            text-align: center;
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -643,6 +712,19 @@
                 flex-direction: column;
                 gap: var(--space-2xs);
             }
+
+            .project-item {
+                flex-direction: column;
+            }
+
+            .project-body {
+                max-width: none;
+            }
+
+            .project-media {
+                max-width: 420px;
+                width: 100%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -709,7 +791,7 @@
                 </div>
                 <div class="bio-text">
                     <p>My research background spans three distinct areas: <strong>Imitation Learning frameworks</strong>, <strong>Human-Machine Interfaces (HMIs)</strong>, and <strong>Computational Geometry</strong>, all grounded in strong mathematical foundations. While primarily applied to robotics, my work focuses on interactions of intelligent systems with the environment, along with safe and effective operations.</p>
-                    <p>I'm seeking to apply this expertise to broader, high-impact domains, including responsible AI, climate research, and scientific machine learning. 🌍</p>
+                    <p>I'm seeking to apply this expertise to broader, high-impact domains, including responsible AI, climate research and modeling, and scientific machine learning.</p>
                     <p style="font-style: italic;">Outside the lab, I love cinema, cooking, and chasing sunsets. 🎬🍳🌅</p>
                 </div>
             </div>
@@ -747,88 +829,138 @@
             <h2>Research Projects</h2>
             <div class="project-list">
                 <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title">State-Only Offline Imitation Learning</div>
-                        <div class="project-time">Aug 2025 – Present</div>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <div class="project-title">State-Only Offline Imitation Learning</div>
+                            <div class="project-time">Aug 2025 – Present</div>
+                        </div>
+                        <p class="project-description">
+                            An offline imitation learning framework that learns from sparse, state-only expert demonstrations alongside suboptimal trajectories. Sub-trajectory identification and contrastive likelihood-ratio scoring recover expert-like behavior, with performance comparable to SMODICE and LobsDICE across continuous Gymnasium control domains.
+                        </p>
+                        <div class="project-meta">IIT Madras</div>
+                        <div class="project-tags">
+                            <span class="tag">RL</span>
+                            <span class="tag">Imitation Learning</span>
+                        </div>
+                         <!--Optional further-detail link: drop a PDF/doc in documents/ and uncomment-->
+                        <a class="project-link" href="assets/SOIL_Flows.pdf" target="_blank">Read full report →</a>
+
                     </div>
-                    <p class="project-description">
-                        An offline framework enabling agents to learn optimal policies from sparse state-only expert demonstrations. Utilizes sub-trajectory identification and contrastive scoring.
-                    </p>
-                    <div class="project-meta">IIT Madras</div>
-                    <div class="project-tags">
-                        <span class="tag">RL</span>
-                        <span class="tag">Imitation Learning</span>
-                        <span class="tag">Python</span>
-                    </div>
+                    <figure class="project-media">
+                        <video src="assets/videos/Fully Completing EP.mp4" controls></video>
+                        <figcaption>A Half-Cheetah policy learnt through the algorithm</figcaption>
+                    </figure>
                 </div>
 
                 <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title">Interactive Steering for Autonomous Driving Handover</div>
-                        <div class="project-time">Jul 2024 – Jan 2025</div>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <div class="project-title">Interactive Steering for Autonomous Driving Handover</div>
+                            <div class="project-time">Jul 2024 – Jan 2025</div>
+                        </div>
+                        <div class="project-subtitle">Published Research</div>
+                        <p class="project-description">
+                            Level 1–3 driver-assistance systems require a human to safely reclaim control at any moment, making a smooth handover critical for safety. This work introduces an interactive steering module using quasi-direct drive actuation with haptic, audio, and visual feedback, validated through a driving-simulator user study.
+                        </p>
+                        <div class="project-meta">IIT Madras</div>
+                        <div class="project-tags">
+                            <span class="tag">HMI</span>
+                            <span class="tag">Control</span>
+                            <span class="tag">User Study</span>
+                        </div>
+                         <!--Optional further-detail link: drop a PDF/doc in documents/ and uncomment-->
+                        <a class="project-link" href="https://www.semanticscholar.org/paper/Interactive-Steering-for-Seamless-Transition-During-Gurumoorthi-Bagaria/2719a593f34715be1953f5c51321b10e29af814f" target="_blank">Read full report →</a>
+
                     </div>
-                    <div class="project-subtitle">Published Research</div>
-                    <p class="project-description">
-                        Physical HMI for Level 3 autonomous vehicle control handover using quasi-direct drive actuators and multi-modal feedback (haptic, audio, visual).
-                    </p>
-                    <div class="project-meta">IIT Madras</div>
-                    <div class="project-tags">
-                        <span class="tag">HMI</span>
-                        <span class="tag">Control</span>
-                        <span class="tag">User Study</span>
-                    </div>
+                    <figure class="project-media">
+                        <img src="assets/videos/Driving_Simulator.png" alt="Interactive Steering for Autonomous Driving Handover">
+                        <figcaption>Driving simulator setup with the interactive steering, for the user study</figcaption>
+                    </figure>
                 </div>
 
                 <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title">De(l)Noise: Point Cloud Denoising</div>
-                        <div class="project-time">Dec 2023 – Mar 2024</div>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <div class="project-title">De(l)Noise: Point Cloud Denoising</div>
+                            <div class="project-time">Dec 2023 – Mar 2024</div>
+                        </div>
+                        <div class="project-subtitle">Published in Computers &amp; Graphics, 2025</div>
+                        <p class="project-description">
+                            A lightweight, parallel point-cloud denoising algorithm built on Delaunay Triangulation. Handles massive clouds (20M+ points) with feature-preserving results and no manual parameter tuning.
+                        </p>
+                        <div class="project-meta">IIT Madras</div>
+                        <div class="project-tags">
+                            <span class="tag">Geometry</span>
+                            <span class="tag">3D Vision</span>
+                            <span class="tag">C++</span>
+                        </div>
+                         <!--Optional further-detail link: drop a PDF/doc in documents/ and uncomment-->
+                        <a class="project-link" href="https://www.sciencedirect.com/science/article/pii/S0097849325001517" target="_blank">Read full report →</a>
+
                     </div>
-                    <div class="project-subtitle">Published in Computers &amp; Graphics, 2025</div>
-                    <p class="project-description">
-                        Lightweight parallel 3D point cloud denoising using Delaunay Triangulation. Handles massive point clouds (20M+ points) without manual parameter tuning.
-                    </p>
-                    <div class="project-meta">IIT Madras</div>
-                    <div class="project-tags">
-                        <span class="tag">Geometry</span>
-                        <span class="tag">3D Vision</span>
-                        <span class="tag">C++</span>
-                    </div>
+                    <figure class="project-media">
+                        <img src="assets/videos/delnoise.png" alt="De(l)Noise: Point Cloud Denoising">
+                        <figcaption>De[l]noise performance against other competing approaches on the Kinect Dataset</figcaption>
+                    </figure>
                 </div>
             </div>
 
             <h2>Course Projects</h2>
             <div class="project-list">
                 <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title">Greedy Multi-Agent Hybrid A*</div>
-                        <div class="project-time">Feb – Mar 2025</div>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <div class="project-title">Greedy Multi-Agent Hybrid A*</div>
+                            <div class="project-time">Feb – Mar 2025</div>
+                        </div>
+                        <p class="project-description">
+                            Pathfinding algorithm for multi-agent, multi-target environments. Placed 3rd in class with smooth trajectory tracking using PID control.
+                        </p>
+                        <div class="project-meta">KTH Stockholm</div>
+                        <div class="project-tags">
+                            <span class="tag">Planning</span>
+                            <span class="tag">Multi-Agent</span>
+                            <!--<span class="tag">Python</span>-->
+                        </div>
+                        <!-- Optional further-detail link: drop a PDF/doc in documents/ and uncomment
+                        <a class="project-link" href="documents/YOUR_DOC.pdf" target="_blank">Read full report →</a>
+                        -->
                     </div>
-                    <p class="project-description">
-                        Pathfinding algorithm for multi-agent, multi-target environments. Placed 3rd in class with smooth trajectory tracking using PID control.
-                    </p>
-                    <div class="project-meta">KTH Stockholm</div>
-                    <div class="project-tags">
-                        <span class="tag">Planning</span>
-                        <span class="tag">Multi-Agent</span>
-                        <span class="tag">Python</span>
-                    </div>
+                     <!--Optional media: drop a file in assets/projects/ and uncomment below-->
+                    <figure class="project-media">
+                        <!--<img src="assets/projects/YOUR_IMAGE.jpg" alt="Greedy Multi-Agent Hybrid A*">-->
+                        <video src="assets/videos/kth_dd2438.mov" controls></video>
+                        <figcaption>A multi-agent coordinated planning in 'bakery' settings</figcaption>
+                    </figure>
+
                 </div>
 
                 <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title">Language-Based Hierarchical Agent</div>
-                        <div class="project-time">Aug – Nov 2024</div>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <div class="project-title">Language-Based Hierarchical Agent</div>
+                            <div class="project-time">Aug – Nov 2024</div>
+                        </div>
+                        <p class="project-description">
+                            Hierarchical agent using language representation for partially observable reasoning tasks. Autoencoder-based feature extraction for policy learning with PPO.
+                        </p>
+                        <div class="project-meta">IIT Madras</div>
+                        <div class="project-tags">
+                            <span class="tag">RL</span>
+                            <span class="tag">Language</span>
+                            <span class="tag">Hierarchical</span>
+                        </div>
+                        <!-- Optional further-detail link: drop a PDF/doc in documents/ and uncomment
+                        <a class="project-link" href="documents/YOUR_DOC.pdf" target="_blank">Read full report →</a>
+                        -->
                     </div>
-                    <p class="project-description">
-                        Hierarchical agent using language representation for partially observable reasoning tasks. Autoencoder-based feature extraction for policy learning with PPO.
-                    </p>
-                    <div class="project-meta">IIT Madras</div>
-                    <div class="project-tags">
-                        <span class="tag">RL</span>
-                        <span class="tag">Language</span>
-                        <span class="tag">Hierarchical</span>
-                    </div>
+                     <!--Optional media: drop a file in assets/projects/ and uncomment below-->
+                    <figure class="project-media">
+                        <img src="assets/videos/lh_course_proj_da7400.png" alt="Language-Based Hierarchical Agent">
+                        <!--<video src="assets/projects/YOUR_VIDEO.mp4" controls></video>-->
+                        <figcaption>Pipeline to perform policy learning from Language aided POMDP</figcaption>
+                    </figure>
+
                 </div>
             </div>
 
@@ -958,7 +1090,7 @@
                     <div class="education-details">
                         <strong>Master's in Computer Science</strong><br>
                         <strong>GPA:</strong> 9 / 10.0<br>
-                        <strong>Jan – Jun 2025</strong><br>
+                        <strong>Jan 2025 – Jun 2025</strong><br>
                         Stockholm, Sweden
                     </div>
                     <a href="documents/KTH_Transcript.pdf" class="education-cta" target="_blank">View Transcript →</a>
@@ -993,7 +1125,7 @@
                     <div class="course-group-title">Geometry &amp; Computation</div>
                     <ul class="course-list">
                         <li>Algorithms in Computational Geometry <span class="course-code">ED5310</span></li>
-                        <li>Computational Geometry <span class="course-code">ED5310</span></li>
+                        <!--<li>Computational Geometry <span class="course-code">ED5310</span></li>-->
                         <li>Nonlinear System Analysis <span class="course-code">EE6415</span></li>
                     </ul>
                 </div>
@@ -1001,7 +1133,7 @@
                 <div>
                     <div class="course-group-title">Other Disciplines</div>
                     <ul class="course-list">
-                        <li>Digital Signal Processing for Engineering Design <span class="course-code">ED5917</span></li>
+                        <li>Digital Signal Processing for Engineering Design <span class="course-code">ED5017</span></li>
                         <li>Linguistics <span class="course-code">HS3017, HS5025</span></li>
                         <li>Theoretical Biophysics <span class="course-code">BT6220</span></li>
                     </ul>
