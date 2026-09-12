@@ -5,42 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adithyaa Rettaikudi Gurumoorthi</title>
     <meta name="description" content="Robotics & ML researcher. Imitation Learning | HMIs | Computational Geometry" />
-
-    <!-- Google Fonts: Lora (headings) + Roboto (body) -->
+    
+    <!-- Google Fonts: Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+    
     <style>
-        /* ═══════════════════════════════════════════════════════ */
-        /* DESIGN TOKENS — change these to re-theme the whole site  */
-        /* ═══════════════════════════════════════════════════════ */
         :root {
-            /* Soft beige / warm neutral palette */
-            --bg: #f2ece1;              /* page background */
-            --bg-secondary: #faf6ee;    /* card / panel background */
-            --bg-tertiary: #ece3d3;     /* subtle chip / hover background */
-            --border: #ddd0b8;
-            --text: #3c352c;
-            --text-muted: #6d6152;
-            --text-light: #948873;
-            --accent: #a2673f;          /* warm terracotta accent */
-            --accent-dark: #7c4c2b;
-            --accent-soft: #efe0cd;     /* pale accent for backgrounds/tags */
-
+            /* Light, clean color scheme */
+            --bg: #fafafa;
+            --bg-secondary: #ffffff;
+            --border: #e5e5e5;
+            --text: #333333;
+            --text-muted: #666666;
+            --text-light: #999999;
+            --accent: #2563eb;
+            --accent-dark: #1e40af;
+            --success: #059669;
+            
             /* Typography */
-            --font-heading: "Lora", Georgia, serif;
-            --font-body: "Roboto", system-ui, sans-serif;
-
-            /* Spacing scale — used everywhere for consistent rhythm */
-            --space-2xs: 0.4rem;
-            --space-xs: 0.75rem;
-            --space-sm: 1.25rem;
-            --space-md: 2rem;
-            --space-lg: 3rem;
-            --space-xl: 4.5rem;
-
-            --radius: 10px;
+            --font-main: "Roboto", system-ui, sans-serif;
+            --font-mono: "Roboto Mono", monospace;
         }
 
         * {
@@ -57,15 +43,15 @@
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: var(--font-body);
+            font-family: var(--font-main);
             font-weight: 400;
-            line-height: 1.65;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        /* NAVIGATION BAR                                       */
+        /* NAVIGATION BAR */
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         nav {
             position: fixed;
@@ -73,143 +59,65 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(242, 236, 225, 0.92);
-            backdrop-filter: blur(8px);
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
-            height: 64px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 var(--space-md);
+            padding: 0 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
         .nav-logo {
-            font-family: var(--font-heading);
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
             text-decoration: none;
-            letter-spacing: 0.5px;
-            cursor: default;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-logo:hover {
+            color: var(--accent-dark);
         }
 
         .nav-menu {
             display: flex;
-            gap: var(--space-md);
+            gap: 1.5rem;
             align-items: center;
         }
 
         .nav-item {
             font-size: 0.95rem;
             font-weight: 500;
-            color: var(--text-muted);
+            color: var(--text);
             cursor: pointer;
             text-decoration: none;
-            padding: var(--space-2xs) 0;
+            padding: 0.5rem 0;
             border-bottom: 2px solid transparent;
-            transition: color 0.2s ease, border-color 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .nav-item:hover,
         .nav-item.active {
-            color: var(--accent-dark);
+            color: var(--accent);
             border-bottom-color: var(--accent);
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        /* MAIN CONTAINER                                       */
+        /* MAIN CONTAINER */
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         main {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: calc(64px + var(--space-lg)) var(--space-md) var(--space-xl);
+            padding: 7rem 2rem 4rem;
             min-height: 100vh;
         }
 
-        /* Profile header: always visible above every section, not a tab */
-        .profile-header {
-            display: grid;
-            grid-template-columns: 120px 1fr;
-            gap: var(--space-md);
-            align-items: center;
-            padding-bottom: var(--space-lg);
-            margin-bottom: var(--space-lg);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .profile-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--bg-secondary);
-            box-shadow: 0 0 0 1px var(--border);
-            display: block;
-        }
-
-        .profile-header h1 {
-            font-family: var(--font-heading);
-            font-size: 1.9rem;
-            font-weight: 600;
-            margin-bottom: var(--space-2xs);
-            color: var(--text);
-        }
-
-        .tagline {
-            font-size: 1rem;
-            color: var(--accent-dark);
-            font-weight: 500;
-            margin-bottom: var(--space-xs);
-        }
-
-        .profile-links {
-            display: flex;
-            gap: var(--space-xs);
-            flex-wrap: wrap;
-            margin-top: var(--space-xs);
-        }
-
-        .social-link,
-        .doc-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.45rem 0.85rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.85rem;
-            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-        }
-
-        .social-link:hover,
-        .doc-link:hover {
-            background: var(--accent-soft);
-            border-color: var(--accent);
-            color: var(--accent-dark);
-        }
-
-        .bio-text {
-            font-size: 0.98rem;
-            line-height: 1.8;
-            color: var(--text-muted);
-            margin-top: var(--space-sm);
-            max-width: 62ch;
-        }
-
-        .bio-text p + p {
-            margin-top: var(--space-xs);
-        }
-
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        /* PAGES / SECTIONS                                     */
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .page {
             display: none;
-            animation: fadeIn 0.25s ease;
+            animation: fadeIn 0.3s ease;
         }
 
         .page.active {
@@ -217,155 +125,243 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        /* HEADINGS                                             */
+        /* ABOUT PAGE LAYOUT - SIDE BY SIDE */
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .about-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-image-section {
+            text-align: center;
+        }
+
+        .profile-photo {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .about-content-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .bio-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
+        }
+
+        .document-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .doc-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.2rem;
+            background: var(--bg-secondary);
+            border: 2px solid var(--accent);
+            border-radius: 6px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .doc-link:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        /* HEADINGS */
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         h1 {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: var(--space-md);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
             color: var(--text);
         }
 
         h2 {
-            font-family: var(--font-heading);
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 600;
-            margin: var(--space-lg) 0 var(--space-sm);
+            margin: 2rem 0 1rem;
             color: var(--text);
-        }
-
-        h2:first-of-type {
-            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
         }
 
         h3 {
-            font-size: 1.05rem;
+            font-size: 1.2rem;
             font-weight: 600;
-            margin: 0 0 var(--space-xs);
+            margin: 1.5rem 0 0.5rem;
             color: var(--text);
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        /* SECTIONS (grouped content blocks within a page)      */
+        /* SECTIONS */
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .section {
-            margin-bottom: var(--space-lg);
-        }
-
-        .section:last-child {
-            margin-bottom: 0;
+            margin-bottom: 3rem;
         }
 
         .section-title {
-            font-family: var(--font-heading);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: var(--space-sm);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
             color: var(--text);
             display: flex;
             align-items: center;
-            gap: var(--space-2xs);
+            gap: 0.75rem;
         }
 
         .section-title::before {
             content: "";
             display: inline-block;
             width: 4px;
-            height: 20px;
+            height: 24px;
             background: var(--accent);
             border-radius: 2px;
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        /* ENTRIES (Research, Work, Teaching, Education)        */
+        /* ENTRIES (Research, Work, Teaching, Education) */
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .entry {
             background: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: var(--space-sm);
-            margin-bottom: var(--space-sm);
-            transition: border-color 0.2s ease;
-        }
-
-        .entry:last-child {
-            margin-bottom: 0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s ease;
         }
 
         .entry:hover {
             border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
         }
 
         .entry-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: var(--space-xs);
+            margin-bottom: 0.75rem;
             flex-wrap: wrap;
-            gap: var(--space-xs);
+            gap: 1rem;
         }
 
         .entry-title {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: var(--text);
         }
 
         .entry-time {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-light);
             font-style: italic;
             white-space: nowrap;
         }
 
         .entry-subtitle {
-            font-size: 0.9rem;
-            color: var(--accent-dark);
+            font-size: 0.95rem;
+            color: var(--accent);
             font-weight: 500;
-            margin-bottom: var(--space-2xs);
+            margin-bottom: 0.5rem;
         }
 
         .entry-description {
             font-size: 0.95rem;
             color: var(--text);
             line-height: 1.7;
-            margin-bottom: var(--space-xs);
-        }
-
-        .entry-description:last-child {
-            margin-bottom: 0;
+            margin-bottom: 0.75rem;
         }
 
         .entry-points {
             list-style: none;
-            margin-bottom: var(--space-xs);
-        }
-
-        .entry-points:last-child {
-            margin-bottom: 0;
         }
 
         .entry-points li {
             font-size: 0.95rem;
             color: var(--text);
             line-height: 1.7;
-            padding-left: var(--space-sm);
+            padding-left: 1.5rem;
             position: relative;
-            margin-bottom: var(--space-2xs);
-        }
-
-        .entry-points li:last-child {
-            margin-bottom: 0;
+            margin-bottom: 0.5rem;
         }
 
         .entry-points li::before {
-            content: "–";
+            content: "▸";
             position: absolute;
             left: 0;
             color: var(--accent);
@@ -373,50 +369,52 @@
         }
 
         .entry-tags {
-            margin-top: var(--space-xs);
+            margin-top: 1rem;
             display: flex;
-            gap: var(--space-2xs);
+            gap: 0.5rem;
             flex-wrap: wrap;
         }
 
         .tag {
             display: inline-block;
             padding: 0.3rem 0.7rem;
-            background: var(--bg-tertiary);
+            background: var(--bg);
             border: 1px solid var(--border);
-            border-radius: 999px;
-            font-size: 0.78rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
             font-weight: 500;
             color: var(--text-muted);
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        /* PROJECTS                                             */
+        /* PROJECTS */
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: var(--space-md);
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .project-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
+            border-radius: 8px;
             overflow: hidden;
-            transition: border-color 0.2s ease;
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
         }
 
         .project-card:hover {
+            transform: translateY(-4px);
             border-color: var(--accent);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.15);
         }
 
         .project-media {
             width: 100%;
-            height: 180px;
-            background: var(--bg-tertiary);
+            height: 200px;
+            background: var(--bg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -432,143 +430,145 @@
         }
 
         .project-content {
-            padding: var(--space-sm);
+            padding: 1.5rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            gap: var(--space-2xs);
         }
 
         .project-title {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--text);
+            margin-bottom: 0.5rem;
         }
 
         .project-subtitle {
-            font-size: 0.85rem;
-            color: var(--accent-dark);
+            font-size: 0.9rem;
+            color: var(--accent);
             font-weight: 500;
+            margin-bottom: 1rem;
         }
 
         .project-description {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            line-height: 1.65;
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 1rem;
             flex-grow: 1;
-            margin: var(--space-2xs) 0;
         }
 
         .project-meta {
             display: flex;
-            gap: var(--space-xs);
-            font-size: 0.8rem;
+            gap: 1rem;
+            font-size: 0.85rem;
             color: var(--text-light);
+            margin-bottom: 1rem;
         }
 
         .project-tags {
             display: flex;
-            gap: var(--space-2xs);
+            gap: 0.5rem;
             flex-wrap: wrap;
         }
 
         .project-link {
             display: inline-block;
-            margin-top: var(--space-xs);
-            padding: 0.55rem 1rem;
+            margin-top: auto;
+            padding: 0.6rem 1rem;
             background: var(--accent);
-            color: var(--bg-secondary);
-            border-radius: 6px;
+            color: white;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.88rem;
-            transition: background 0.2s ease;
-            align-self: flex-start;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            align-self: fit-content;
         }
 
         .project-link:hover {
             background: var(--accent-dark);
+            transform: translateX(2px);
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        /* EDUCATION & COURSEWORK                               */
+        /* EDUCATION & COURSEWORK */
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .education-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--space-sm);
-            margin-bottom: var(--space-lg);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
         .education-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: var(--space-sm);
-            transition: border-color 0.2s ease;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
         }
 
         .education-card:hover {
             border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
         }
 
         .education-degree {
-            font-size: 0.82rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: var(--accent-dark);
-            margin-bottom: var(--space-2xs);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
         }
 
         .education-institution {
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--text);
-            margin-bottom: var(--space-xs);
+            margin-bottom: 0.5rem;
         }
 
         .education-details {
             font-size: 0.9rem;
             color: var(--text-muted);
-            margin-bottom: var(--space-sm);
-            line-height: 1.7;
+            margin-bottom: 1rem;
+            line-height: 1.6;
         }
 
         .education-cta {
             display: inline-block;
-            color: var(--accent-dark);
+            color: var(--accent);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
+            transition: all 0.2s ease;
         }
 
         .education-cta:hover {
+            color: var(--accent-dark);
             text-decoration: underline;
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        /* SKILLS                                               */
+        /* SKILLS */
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: var(--space-sm);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
 
         .skill-block {
             background: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: var(--space-sm);
+            border-radius: 8px;
+            padding: 1.5rem;
         }
 
         .skill-category {
-            font-weight: 700;
-            color: var(--accent-dark);
-            margin-bottom: var(--space-xs);
-            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -580,24 +580,24 @@
         .skill-list li {
             font-size: 0.95rem;
             color: var(--text);
-            padding: 0.25rem 0;
+            padding: 0.3rem 0;
             line-height: 1.6;
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        /* FOOTER                                               */
+        /* FOOTER */
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         footer {
             text-align: center;
-            padding: var(--space-lg) var(--space-md);
+            padding: 3rem 2rem;
             border-top: 1px solid var(--border);
-            margin-top: var(--space-lg);
+            margin-top: 3rem;
             color: var(--text-light);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         footer a {
-            color: var(--accent-dark);
+            color: var(--accent);
             text-decoration: none;
             font-weight: 500;
         }
@@ -607,15 +607,15 @@
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        /* RESPONSIVE                                           */
+        /* RESPONSIVE */
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         @media (max-width: 768px) {
             nav {
-                padding: 0 var(--space-sm);
+                padding: 0 1rem;
             }
 
             .nav-menu {
-                gap: var(--space-sm);
+                gap: 1rem;
             }
 
             .nav-item {
@@ -623,21 +623,20 @@
             }
 
             main {
-                padding: calc(64px + var(--space-md)) var(--space-sm) var(--space-lg);
+                padding: 6rem 1rem 3rem;
             }
 
-            .profile-header {
+            .about-container {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image-section {
                 text-align: center;
-                justify-items: center;
             }
 
-            .profile-links {
-                justify-content: center;
-            }
-
-            .bio-text {
-                max-width: none;
+            .about-content-section h1 {
+                font-size: 2rem;
             }
 
             .projects-grid {
@@ -645,45 +644,64 @@
             }
 
             h1 {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
 
             h2 {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
 
             .section-title {
-                font-size: 1.15rem;
+                font-size: 1.4rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .social-link {
+                width: 100%;
+                justify-content: center;
             }
         }
 
         @media (max-width: 480px) {
             nav {
-                height: 56px;
-                padding: 0 var(--space-xs);
+                height: 50px;
+                padding: 0 0.75rem;
             }
 
             .nav-menu {
-                gap: var(--space-xs);
+                gap: 0.75rem;
             }
 
             .nav-item {
-                font-size: 0.78rem;
+                font-size: 0.8rem;
             }
 
             main {
-                padding: calc(56px + var(--space-sm)) var(--space-xs) var(--space-md);
+                padding: 5rem 0.75rem 2rem;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .about-content-section h1 {
+                font-size: 1.5rem;
             }
 
             .entry,
             .education-card,
             .skill-block {
-                padding: var(--space-xs);
+                padding: 1rem;
             }
 
             .entry-header {
                 flex-direction: column;
-                gap: var(--space-2xs);
+                gap: 0.5rem;
             }
         }
     </style>
@@ -691,48 +709,72 @@
 <body>
     <!-- NAVIGATION -->
     <nav>
-        <span class="nav-logo">ARG</span>
+        <a href="#" class="nav-logo" onclick="showPage('about'); return false;">ARG</a>
         <div class="nav-menu">
-            <a class="nav-item active" onclick="showPage('research', event); return false;">Research</a>
-            <a class="nav-item" onclick="showPage('projects', event); return false;">Projects</a>
-            <a class="nav-item" onclick="showPage('experience', event); return false;">Experience</a>
-            <a class="nav-item" onclick="showPage('education', event); return false;">Education</a>
-            <a class="nav-item" onclick="showPage('skills', event); return false;">Skills</a>
+            <a class="nav-item active" onclick="showPage('about'); return false;">About</a>
+            <a class="nav-item" onclick="showPage('research'); return false;">Research</a>
+            <a class="nav-item" onclick="showPage('projects'); return false;">Projects</a>
+            <a class="nav-item" onclick="showPage('experience'); return false;">Experience</a>
+            <a class="nav-item" onclick="showPage('education'); return false;">Education</a>
+            <a class="nav-item" onclick="showPage('skills'); return false;">Skills</a>
         </div>
     </nav>
 
     <!-- MAIN CONTENT -->
     <main>
         <!-- ═════════════════════════════════════════════════════ -->
-        <!-- PROFILE HEADER — always visible, not a tab            -->
+        <!-- ABOUT PAGE -->
         <!-- ═════════════════════════════════════════════════════ -->
-        <div class="profile-header">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect fill='%23ece3d3' width='120' height='120'/%3E%3Ctext x='50%25' y='50%25' font-size='12' fill='%23948873' text-anchor='middle' dominant-baseline='middle'%3EPhoto%3C/text%3E%3C/svg%3E" alt="Adithyaa" class="profile-photo" id="profilePhoto">
-
-            <div>
-                <h1>Adithyaa Rettaikudi Gurumoorthi</h1>
-                <p class="tagline">Robotics · Machine Learning · AI Systems</p>
-                <div class="profile-links">
-                    <a href="mailto:adithyaa.off@gmail.com" class="social-link">📧 Email</a>
-                    <a href="https://www.linkedin.com/in/adithyaa-rg" class="social-link" target="_blank">💼 LinkedIn</a>
-                    <a href="https://github.com/adithyaa-rg" class="social-link" target="_blank">🐙 GitHub</a>
-                    <a href="https://scholar.google.com/citations?user=YOUR_ID" class="social-link" target="_blank">📚 Scholar</a>
-                    <a href="documents/Academic_CV_Adithyaa.pdf" class="doc-link" target="_blank">📄 CV</a>
-                    <a href="documents/IITM_Transcript.pdf" class="doc-link" target="_blank">🎓 IIT Transcript</a>
-                    <a href="documents/KTH_Transcript.pdf" class="doc-link" target="_blank">🇸🇪 KTH Transcript</a>
+        <div id="about" class="page active">
+            <div class="about-container">
+                <!-- LEFT: Image -->
+                <div class="about-image-section">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 350'%3E%3Crect fill='%23e5e5e5' width='300' height='350'/%3E%3Ctext x='50%' y='50%' font-size='18' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3EProfile Photo%3C/text%3E%3C/svg%3E" alt="Adithyaa" class="profile-photo" id="profilePhoto">
+                    
+                    <div class="document-links">
+                        <a href="documents/Academic_CV_Adithyaa.pdf" class="doc-link" target="_blank">📄 CV</a>
+                        <a href="documents/IITM_Transcript.pdf" class="doc-link" target="_blank">🎓 IIT Transcript</a>
+                        <a href="documents/KTH_Transcript.pdf" class="doc-link" target="_blank">🇸🇪 KTH Transcript</a>
+                    </div>
                 </div>
-                <div class="bio-text">
-                    <p>My research background spans three distinct areas: <strong>Imitation Learning frameworks</strong>, <strong>Human-Machine Interfaces (HMIs)</strong>, and <strong>Computational Geometry</strong>, all grounded in strong mathematical foundations. While primarily applied to robotics, my work focuses on how intelligent systems interact safely and effectively with their physical environments.</p>
-                    <p>I'm seeking to apply this expertise to broader, high-impact domains, including responsible AI, climate research, and scientific machine learning. 🌍</p>
-                    <p style="font-style: italic;">Outside the lab, I love cinema, cooking, and chasing sunsets. 🎬🍳🌅</p>
+
+                <!-- RIGHT: Content -->
+                <div class="about-content-section">
+                    <h1>Adithyaa Rettaikudi Gurumoorthi</h1>
+                    <p class="tagline">Robotics • Machine Learning • AI Systems</p>
+
+                    <div class="bio-text">
+                        <p>My research background spans three distinct areas: <strong>Imitation Learning frameworks</strong>, <strong>Human-Machine Interfaces (HMIs)</strong>, and <strong>Computational Geometry</strong>, all grounded in strong mathematical foundations. While primarily applied to robotics, my work focuses on how intelligent systems interact safely and effectively with their physical environments.</p>
+                        <p style="margin-top: 1rem;">I'm seeking to apply this expertise to broader, high-impact domains, including responsible AI, climate research, and scientific machine learning. 🌍</p>
+                        <p style="margin-top: 1rem; font-style: italic;">Outside the lab, I love cinema, cooking, and chasing sunsets. 🎬🍳🌅</p>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="mailto:adithyaa.off@gmail.com" class="social-link">
+                            <span>📧</span>
+                            <span>Email</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/adithyaa-rg" class="social-link" target="_blank">
+                            <span>💼</span>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/adithyaa-rg" class="social-link" target="_blank">
+                            <span>🐙</span>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=YOUR_ID" class="social-link" target="_blank">
+                            <span>📚</span>
+                            <span>Scholar</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- ═════════════════════════════════════════════════════ -->
-        <!-- RESEARCH INTERESTS PAGE                                -->
+        <!-- RESEARCH INTERESTS PAGE -->
         <!-- ═════════════════════════════════════════════════════ -->
-        <div id="research" class="page active">
+        <div id="research" class="page">
             <h1>Research Interests</h1>
 
             <div class="section">
@@ -793,19 +835,20 @@
         </div>
 
         <!-- ═════════════════════════════════════════════════════ -->
-        <!-- PROJECTS PAGE                                          -->
+        <!-- PROJECTS PAGE -->
         <!-- ═════════════════════════════════════════════════════ -->
         <div id="projects" class="page">
-            <h1>Projects &amp; Publications</h1>
+            <h1>Projects & Publications</h1>
 
             <div class="projects-grid">
                 <!-- PROJECT 1 -->
                 <div class="project-card">
                     <div class="project-media">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23ece3d3' width='300' height='200'/%3E%3C/svg%3E" alt="State-Only Imitation Learning">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23f0f0f0' width='300' height='200'/%3E%3C/svg%3E" alt="State-Only Imitation Learning">
                     </div>
                     <div class="project-content">
                         <div class="project-title">State-Only Offline Imitation Learning</div>
+                        <div class="project-subtitle">Research (In Progress)</div>
                         <p class="project-description">
                             An offline framework enabling agents to learn optimal policies from sparse state-only expert demonstrations. Utilizes sub-trajectory identification and contrastive scoring.
                         </p>
@@ -825,7 +868,7 @@
                 <!-- PROJECT 2 -->
                 <div class="project-card">
                     <div class="project-media">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23ece3d3' width='300' height='200'/%3E%3C/svg%3E" alt="Steering Interface">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23f0f0f0' width='300' height='200'/%3E%3C/svg%3E" alt="Steering Interface">
                     </div>
                     <div class="project-content">
                         <div class="project-title">Interactive Steering for Autonomous Driving Handover</div>
@@ -849,11 +892,11 @@
                 <!-- PROJECT 3 -->
                 <div class="project-card">
                     <div class="project-media">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23ece3d3' width='300' height='200'/%3E%3C/svg%3E" alt="De(l)Noise">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23f0f0f0' width='300' height='200'/%3E%3C/svg%3E" alt="De(l)Noise">
                     </div>
                     <div class="project-content">
                         <div class="project-title">De(l)Noise: Point Cloud Denoising</div>
-                        <div class="project-subtitle">Published in Computers &amp; Graphics 2025</div>
+                        <div class="project-subtitle">Published in Computers & Graphics 2025</div>
                         <p class="project-description">
                             Lightweight parallel 3D point cloud denoising using Delaunay Triangulation. Handles massive point clouds (20M+ points) without manual parameter tuning.
                         </p>
@@ -873,10 +916,35 @@
                 <!-- PROJECT 4 -->
                 <div class="project-card">
                     <div class="project-media">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23ece3d3' width='300' height='200'/%3E%3C/svg%3E" alt="Hybrid A*">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23f0f0f0' width='300' height='200'/%3E%3C/svg%3E" alt="Ola Krutrim">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-title">ADAS Planning Pipeline</div>
+                        <div class="project-subtitle">Ola Krutrim Internship</div>
+                        <p class="project-description">
+                            End-to-end autonomous driving stack with SMAC Planner and MPPI Controller. Deployed on Honda City with LIDAR-camera fusion perception.
+                        </p>
+                        <div class="project-meta">
+                            <span>May – Jul 2025</span>
+                            <span>Ola Krutrim, Bangalore</span>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Autonomous Driving</span>
+                            <span class="tag">ROS2</span>
+                            <span class="tag">Planning</span>
+                        </div>
+                        <a href="#" class="project-link">View Details</a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 5 -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23f0f0f0' width='300' height='200'/%3E%3C/svg%3E" alt="Hybrid A*">
                     </div>
                     <div class="project-content">
                         <div class="project-title">Greedy Multi-Agent Hybrid A*</div>
+                        <div class="project-subtitle">Course Project (KTH)</div>
                         <p class="project-description">
                             Pathfinding algorithm for multi-agent, multi-target environments. Placed 3rd in class with smooth trajectory tracking using PID control.
                         </p>
@@ -893,13 +961,14 @@
                     </div>
                 </div>
 
-                <!-- PROJECT 5 -->
+                <!-- PROJECT 6 -->
                 <div class="project-card">
                     <div class="project-media">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23ece3d3' width='300' height='200'/%3E%3C/svg%3E" alt="Language Hierarchical Agent">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23f0f0f0' width='300' height='200'/%3E%3C/svg%3E" alt="Language Hierarchical Agent">
                     </div>
                     <div class="project-content">
                         <div class="project-title">Language-Based Hierarchical Agent</div>
+                        <div class="project-subtitle">Course Project (RL)</div>
                         <p class="project-description">
                             Hierarchical agent using language representation for partially observable reasoning tasks. Autoencoder-based feature extraction for policy learning with PPO.
                         </p>
@@ -917,19 +986,19 @@
                 </div>
             </div>
 
-            <h2>Publications</h2>
+            <h2 style="margin-top: 3rem;">Publications</h2>
             <div class="entry">
                 <h3>International Journal</h3>
-                <p class="entry-description">
+                <p class="entry-description" style="margin-top: 1rem;">
                     <strong>De (l) Noise: A Delaunay based point cloud denoising algorithm</strong>
                     <br>M Reghunath, K Muralidharan, A R Gurumoorthi et al.
-                    <br><em>Computers &amp; Graphics</em>, 104310, 2025
+                    <br><em>Computers & Graphics</em>, 104310, 2025
                 </p>
             </div>
 
             <div class="entry">
                 <h3>International Conference</h3>
-                <p class="entry-description">
+                <p class="entry-description" style="margin-top: 1rem;">
                     <strong>Interactive steering for seamless transition during control handover in autonomous driving</strong>
                     <br>A R Gurumoorthi, V Bagaria, B Sebastian
                     <br><em>Proc. IEEE 4th International Conference on Smart Technologies for Power, Energy and Control (STPEC)</em>, 2025, pp. 1–6
@@ -938,10 +1007,10 @@
         </div>
 
         <!-- ═════════════════════════════════════════════════════ -->
-        <!-- EXPERIENCE PAGE                                        -->
+        <!-- EXPERIENCE PAGE -->
         <!-- ═════════════════════════════════════════════════════ -->
         <div id="experience" class="page">
-            <h1>Work &amp; Teaching Experience</h1>
+            <h1>Work & Teaching Experience</h1>
 
             <div class="section">
                 <div class="section-title">Work Experience</div>
@@ -970,7 +1039,7 @@
                 <div class="entry">
                     <div class="entry-header">
                         <div>
-                            <div class="entry-title">Computer Vision &amp; Planning Engineer Intern</div>
+                            <div class="entry-title">Computer Vision & Planning Engineer Intern</div>
                             <div class="entry-subtitle">Ola Krutrim, Bangalore</div>
                         </div>
                         <div class="entry-time">May – Jul 2025</div>
@@ -1027,14 +1096,14 @@
         </div>
 
         <!-- ═════════════════════════════════════════════════════ -->
-        <!-- EDUCATION PAGE                                         -->
+        <!-- EDUCATION PAGE -->
         <!-- ═════════════════════════════════════════════════════ -->
         <div id="education" class="page">
             <h1>Education</h1>
 
             <div class="education-grid">
                 <div class="education-card">
-                    <div class="education-degree">Dual Degree</div>
+                    <div class="education-degree">DUAL DEGREE</div>
                     <div class="education-institution">Indian Institute of Technology Madras</div>
                     <div class="education-details">
                         <strong>B.Tech in Engineering Design</strong><br>
@@ -1046,7 +1115,7 @@
                 </div>
 
                 <div class="education-card">
-                    <div class="education-degree">Semester Exchange</div>
+                    <div class="education-degree">SEMESTER EXCHANGE</div>
                     <div class="education-institution">KTH Royal Institute of Technology</div>
                     <div class="education-details">
                         <strong>Master's in Computer Science</strong><br>
@@ -1061,16 +1130,16 @@
             <h2>Relevant Coursework</h2>
 
             <div class="section">
-                <h3>Machine Learning &amp; AI</h3>
+                <h3>Machine Learning & AI</h3>
                 <div class="entry">
                     <p class="entry-description">
-                        Reinforcement Learning (CS6700), Recent Advances in RL (DA7400), Artificial Neural Networks &amp; Deep Architectures (DD2437, KTH), Multi-Agent Systems &amp; AI (DD2438, KTH)
+                        Reinforcement Learning (CS6700), Recent Advances in RL (DA7400), Artificial Neural Networks & Deep Architectures (DD2437, KTH), Multi-Agent Systems & AI (DD2438, KTH)
                     </p>
                 </div>
             </div>
 
             <div class="section">
-                <h3>Robotics &amp; Control</h3>
+                <h3>Robotics & Control</h3>
                 <div class="entry">
                     <p class="entry-description">
                         Mechanics of Serial Robots (ED6007), Modern Control Theory (CH5120), Control Systems (ED2040), Introduction to Motion Planning (ED5215), Introduction to Robotics (ID6040)
@@ -1079,7 +1148,7 @@
             </div>
 
             <div class="section">
-                <h3>Geometry &amp; Computation</h3>
+                <h3>Geometry & Computation</h3>
                 <div class="entry">
                     <p class="entry-description">
                         Algorithms in Computational Geometry (ED5310), Computational Geometry (ED5310), Nonlinear System Analysis (EE6415)
@@ -1098,7 +1167,7 @@
         </div>
 
         <!-- ═════════════════════════════════════════════════════ -->
-        <!-- SKILLS PAGE                                            -->
+        <!-- SKILLS PAGE -->
         <!-- ═════════════════════════════════════════════════════ -->
         <div id="skills" class="page">
             <h1>Technical Skills</h1>
@@ -1127,7 +1196,7 @@
                 </div>
 
                 <div class="skill-block">
-                    <div class="skill-category">Robotics &amp; Control</div>
+                    <div class="skill-category">Robotics & Control</div>
                     <ul class="skill-list">
                         <li>ROS2 / ROS</li>
                         <li>Motion Planning</li>
@@ -1148,7 +1217,7 @@
                 </div>
 
                 <div class="skill-block">
-                    <div class="skill-category">Simulation &amp; Tools</div>
+                    <div class="skill-category">Simulation & Tools</div>
                     <ul class="skill-list">
                         <li>NVIDIA Isaac Sim</li>
                         <li>Gazebo / WeBots</li>
@@ -1161,8 +1230,8 @@
                 <div class="skill-block">
                     <div class="skill-category">Hardware</div>
                     <ul class="skill-list">
-                        <li>Actuators &amp; Motors</li>
-                        <li>Sensors &amp; LIDAR</li>
+                        <li>Actuators & Motors</li>
+                        <li>Sensors & LIDAR</li>
                         <li>Embedded Systems</li>
                         <li>Arduino / STM32</li>
                         <li>PCB Design</li>
@@ -1176,16 +1245,16 @@
     <footer>
         <p>Crafted with <span style="color: var(--accent);">♥</span> by Adithyaa | Last updated: Sept 2026</p>
         <p style="margin-top: 1rem; font-size: 0.85rem;">
-            Built with HTML, CSS &amp; JavaScript | <a href="https://github.com/adithyaa-rg" target="_blank">View Source</a>
+            Built with HTML, CSS & JavaScript | <a href="https://github.com/adithyaa-rg" target="_blank">View Source</a>
         </p>
     </footer>
 
     <script>
-        // UTILITY: Show a different section/tab.
-        // pageId must match the id="" of a <div class="page"> in <main>.
-        function showPage(pageId, evt) {
+        // UTILITY: Show different pages
+        function showPage(pageId) {
             // Hide all pages
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
 
             // Show requested page
             const targetPage = document.getElementById(pageId);
@@ -1194,23 +1263,30 @@
             }
 
             // Update nav active state
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            if (evt && evt.target) {
-                evt.target.classList.add('active');
-            }
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            
+            event.target.classList.add('active');
 
-            // Scroll to top of content
+            // Scroll to top
             window.scrollTo(0, 0);
         }
 
-        // OPTIONAL: Load a real profile photo if you add one.
-        // Uncomment and update the path below to use assets/profile-photo.jpg
+        // OPTIONAL: Load profile photo if available
+        // Uncomment and update path to use actual photo
         /*
         document.addEventListener('DOMContentLoaded', () => {
             const profilePhoto = document.getElementById('profilePhoto');
             profilePhoto.src = 'assets/profile-photo.jpg';
         });
         */
+
+        // OPTIONAL: Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Could add any escape handling here
+            }
+        });
     </script>
 </body>
 </html>
