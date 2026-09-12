@@ -18,10 +18,9 @@
         :root {
             /* Soft beige / warm neutral palette */
             --bg: #f2ece1;              /* page background */
-            --bg-secondary: #faf6ee;    /* panel background (education cards only) */
-            --bg-tertiary: #ece3d3;     /* subtle hover background */
+            --bg-secondary: #faf6ee;    /* card / panel background */
+            --bg-tertiary: #ece3d3;     /* subtle chip / hover background */
             --border: #ddd0b8;
-            --border-soft: #e6dcc7;
             --text: #3c352c;
             --text-muted: #6d6152;
             --text-light: #948873;
@@ -130,8 +129,8 @@
         /* Profile header: always visible above every section, not a tab */
         .profile-header {
             display: grid;
-            grid-template-columns: 172px 1fr;
-            gap: var(--space-lg);
+            grid-template-columns: 120px 1fr;
+            gap: var(--space-md);
             align-items: center;
             padding-bottom: var(--space-lg);
             margin-bottom: var(--space-lg);
@@ -139,8 +138,8 @@
         }
 
         .profile-photo {
-            width: 172px;
-            height: 172px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--bg-secondary);
@@ -150,7 +149,7 @@
 
         .profile-header h1 {
             font-family: var(--font-heading);
-            font-size: 2rem;
+            font-size: 1.9rem;
             font-weight: 600;
             margin-bottom: var(--space-2xs);
             color: var(--text);
@@ -163,30 +162,34 @@
             margin-bottom: var(--space-xs);
         }
 
-        /* Contact / profile links — plain text, no button/box styling */
         .profile-links {
             display: flex;
+            gap: var(--space-xs);
             flex-wrap: wrap;
-            align-items: center;
-            gap: var(--space-2xs);
             margin-top: var(--space-xs);
-            font-size: 0.9rem;
         }
 
         .social-link,
         .doc-link {
-            color: var(--accent-dark);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--text);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.85rem;
+            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
         }
 
         .social-link:hover,
         .doc-link:hover {
-            text-decoration: underline;
-        }
-
-        .profile-links .sep {
-            color: var(--text-light);
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            color: var(--accent-dark);
         }
 
         .bio-text {
@@ -280,25 +283,30 @@
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        /* ENTRIES (Research, Work, Teaching) — plain, no boxes */
+        /* ENTRIES (Research, Work, Teaching, Education)        */
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .entry {
-            padding-bottom: var(--space-sm);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: var(--space-sm);
             margin-bottom: var(--space-sm);
-            border-bottom: 1px solid var(--border-soft);
+            transition: border-color 0.2s ease;
         }
 
         .entry:last-child {
             margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
+        }
+
+        .entry:hover {
+            border-color: var(--accent);
         }
 
         .entry-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: var(--space-2xs);
+            margin-bottom: var(--space-xs);
             flex-wrap: wrap;
             gap: var(--space-xs);
         }
@@ -326,7 +334,7 @@
         .entry-description {
             font-size: 0.95rem;
             color: var(--text);
-            line-height: 1.75;
+            line-height: 1.7;
             margin-bottom: var(--space-xs);
         }
 
@@ -364,111 +372,126 @@
             font-weight: bold;
         }
 
-        /* Tags rendered as plain muted text, not chips/pills */
         .entry-tags {
-            margin-top: var(--space-2xs);
-            font-size: 0.82rem;
-            color: var(--text-light);
+            margin-top: var(--space-xs);
+            display: flex;
+            gap: var(--space-2xs);
+            flex-wrap: wrap;
         }
 
-        .entry-tags .tag {
-            color: var(--text-light);
-        }
-
-        .entry-tags .tag::after {
-            content: "·";
-            margin: 0 0.4em;
-            color: var(--text-light);
-        }
-
-        .entry-tags .tag:last-child::after {
-            content: "";
-            margin: 0;
+        .tag {
+            display: inline-block;
+            padding: 0.3rem 0.7rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-muted);
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        /* PROJECTS — flat list, grouped by category            */
+        /* PROJECTS                                             */
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        .project-list {
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: border-color 0.2s ease;
             display: flex;
             flex-direction: column;
         }
 
-        .project-item {
-            padding: var(--space-sm) 0;
-            border-bottom: 1px solid var(--border-soft);
+        .project-card:hover {
+            border-color: var(--accent);
         }
 
-        .project-item:first-child {
-            padding-top: 0;
-        }
-
-        .project-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .project-header {
+        .project-media {
+            width: 100%;
+            height: 180px;
+            background: var(--bg-tertiary);
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: var(--space-xs);
-            margin-bottom: var(--space-2xs);
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-media img,
+        .project-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: var(--space-sm);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2xs);
         }
 
         .project-title {
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--text);
         }
 
-        .project-time {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            font-style: italic;
-            white-space: nowrap;
-        }
-
         .project-subtitle {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             color: var(--accent-dark);
             font-weight: 500;
-            margin-bottom: var(--space-2xs);
         }
 
         .project-description {
-            font-size: 0.95rem;
-            color: var(--text);
-            line-height: 1.75;
-            margin-bottom: var(--space-2xs);
-            max-width: 72ch;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            flex-grow: 1;
+            margin: var(--space-2xs) 0;
         }
 
         .project-meta {
-            font-size: 0.85rem;
+            display: flex;
+            gap: var(--space-xs);
+            font-size: 0.8rem;
             color: var(--text-light);
-            margin-bottom: var(--space-2xs);
         }
 
         .project-tags {
-            font-size: 0.82rem;
-            color: var(--text-light);
+            display: flex;
+            gap: var(--space-2xs);
+            flex-wrap: wrap;
         }
 
-        .project-tags .tag::after {
-            content: "·";
-            margin: 0 0.4em;
+        .project-link {
+            display: inline-block;
+            margin-top: var(--space-xs);
+            padding: 0.55rem 1rem;
+            background: var(--accent);
+            color: var(--bg-secondary);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.88rem;
+            transition: background 0.2s ease;
+            align-self: flex-start;
         }
 
-        .project-tags .tag:last-child::after {
-            content: "";
-            margin: 0;
+        .project-link:hover {
+            background: var(--accent-dark);
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        /* EDUCATION                                            */
+        /* EDUCATION & COURSEWORK                               */
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .education-grid {
             display: grid;
@@ -525,44 +548,40 @@
             text-decoration: underline;
         }
 
-        /* Coursework — clean grouped list instead of boxes/paragraph blobs */
-        .course-groups {
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        /* SKILLS                                               */
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: var(--space-md) var(--space-lg);
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: var(--space-sm);
         }
 
-        .course-group-title {
-            font-size: 0.78rem;
+        .skill-block {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: var(--space-sm);
+        }
+
+        .skill-category {
             font-weight: 700;
-            letter-spacing: 0.6px;
-            text-transform: uppercase;
             color: var(--accent-dark);
             margin-bottom: var(--space-xs);
-            padding-bottom: var(--space-2xs);
-            border-bottom: 1px solid var(--border-soft);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .course-list {
+        .skill-list {
             list-style: none;
         }
 
-        .course-list li {
-            font-size: 0.93rem;
+        .skill-list li {
+            font-size: 0.95rem;
             color: var(--text);
-            padding: 0.3rem 0;
-            line-height: 1.5;
-            border-bottom: 1px dotted var(--border-soft);
-        }
-
-        .course-list li:last-child {
-            border-bottom: none;
-        }
-
-        .course-code {
-            color: var(--text-light);
-            font-size: 0.82rem;
-            margin-left: 0.4em;
+            padding: 0.25rem 0;
+            line-height: 1.6;
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -573,8 +592,8 @@
             padding: var(--space-lg) var(--space-md);
             border-top: 1px solid var(--border);
             margin-top: var(--space-lg);
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
         }
 
         footer a {
@@ -613,17 +632,16 @@
                 justify-items: center;
             }
 
-            .profile-photo {
-                width: 148px;
-                height: 148px;
-            }
-
             .profile-links {
                 justify-content: center;
             }
 
             .bio-text {
                 max-width: none;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
 
             h1 {
@@ -636,12 +654,6 @@
 
             .section-title {
                 font-size: 1.15rem;
-            }
-
-            .project-header,
-            .entry-header {
-                flex-direction: column;
-                gap: var(--space-2xs);
             }
         }
 
@@ -663,8 +675,15 @@
                 padding: calc(56px + var(--space-sm)) var(--space-xs) var(--space-md);
             }
 
-            .education-card {
+            .entry,
+            .education-card,
+            .skill-block {
                 padding: var(--space-xs);
+            }
+
+            .entry-header {
+                flex-direction: column;
+                gap: var(--space-2xs);
             }
         }
     </style>
@@ -678,6 +697,7 @@
             <a class="nav-item" onclick="showPage('projects', event); return false;">Projects</a>
             <a class="nav-item" onclick="showPage('experience', event); return false;">Experience</a>
             <a class="nav-item" onclick="showPage('education', event); return false;">Education</a>
+            <!--<a class="nav-item" onclick="showPage('skills', event); return false;">Skills</a>-->
         </div>
     </nav>
 
@@ -694,17 +714,11 @@
                 <p class="tagline">Robotics · Machine Learning · AI Systems</p>
                 <div class="profile-links">
                     <a href="mailto:adithyaa.off@gmail.com" class="social-link">Email</a>
-                    <span class="sep">·</span>
                     <a href="https://www.linkedin.com/in/adithyaa-rg" class="social-link" target="_blank">LinkedIn</a>
-                    <span class="sep">·</span>
                     <a href="https://github.com/adithyaa-rg" class="social-link" target="_blank">GitHub</a>
-                    <span class="sep">·</span>
                     <a href="https://scholar.google.com/citations?user=k9f5SCYAAAAJ&hl=en&oi=ao" class="social-link" target="_blank">Scholar</a>
-                    <span class="sep">·</span>
                     <a href="documents/Academic_CV_Adithyaa.pdf" class="doc-link" target="_blank">CV</a>
-                    <span class="sep">·</span>
                     <a href="documents/IITM_Transcript.pdf" class="doc-link" target="_blank">IIT Madras Transcript</a>
-                    <span class="sep">·</span>
                     <a href="documents/KTH_Transcript.pdf" class="doc-link" target="_blank">KTH Transcript</a>
                 </div>
                 <div class="bio-text">
@@ -719,12 +733,57 @@
         <!-- RESEARCH INTERESTS PAGE                                -->
         <!-- ═════════════════════════════════════════════════════ -->
         <div id="research" class="page active">
-            <h1>Research Interests</h1>
+            <!--<h1>Research Interests</h1>
 
-            <div class="entry">
-                <p class="entry-description">
-                    My previous research experience spans Imitation and Reinforcement Learning, Computational Geometry, and Human-Machine Interaction for steering systems in autonomous vehicles. While these projects are grounded in robotics, they address broader challenges in intelligent systems and autonomous decision-making.
-                </p>
+            <div class="section">
+                <div class="section-title">Imitation Learning</div>
+                <div class="entry">
+                    <p class="entry-description">
+                        Developing frameworks for learning from demonstrations, particularly focused on <strong>state-only imitation learning</strong> where agents must learn optimal policies from sparse expert demonstrations with mismatched dynamics. My work explores sub-trajectory identification and contrastive likelihood-ratio scoring to identify expert-like behaviors in unlabeled datasets.
+                    </p>
+                    <div class="entry-tags">
+                        <span class="tag">Offline Reinforcement Learning</span>
+                        <span class="tag">Behavioral Cloning</span>
+                        <span class="tag">Sub-trajectory Learning</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Human-Machine Interfaces (HMIs)</div>
+                <div class="entry">
+                    <p class="entry-description">
+                        Creating intuitive and safe interfaces for human-AI interaction, with particular focus on <strong>autonomous vehicle handover systems</strong>. I design physical and feedback mechanisms that enable smooth control transitions during Level 3 autonomous driving, incorporating haptic feedback, audio cues, and real-time monitoring.
+                    </p>
+                    <div class="entry-tags">
+                        <span class="tag">Haptic Feedback</span>
+                        <span class="tag">User Studies</span>
+                        <span class="tag">Autonomous Driving</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Computational Geometry</div>
+                <div class="entry">
+                    <p class="entry-description">
+                        Applying geometric algorithms to solve real-world problems in 3D perception and processing. My work includes <strong>point cloud denoising</strong> using Delaunay Triangulation, feature-preserving processing at scale, and developing lightweight algorithms that overcome the cubic scaling bottlenecks of deep learning approaches.
+                    </p>
+                    <div class="entry-tags">
+                        <span class="tag">Point Cloud Processing</span>
+                        <span class="tag">Delaunay Triangulation</span>
+                        <span class="tag">3D Vision</span>
+                    </div>
+                </div>
+            </div>-->-->
+
+            <div class="section">
+                <div class="section-title">Research Interests</div>
+                <div class="entry">
+                    <p class="entry-description">
+                        My previous research experience spans Imitation and Reinforcement Learning, Computational Geometry, and Human-Machine Interaction for steering systems in autonomous vehicles. While these projects are grounded in robotics, they address broader challenges in intelligent systems and autonomous decision-making.
+                    </p>
+
 
                 <p class="entry-description">
                     I am interested in applying my technical expertise to high-impact problems in adjacent domains, including:
@@ -735,6 +794,10 @@
                     <li><strong>Climate Research:</strong> Applying machine learning to environmental monitoring, sustainability, environmental modeling, and climate data analysis, including the development of robotic systems to address challenges related to climate science.</li>
                     <li><strong>Scientific Machine Learning:</strong> Exploring physics-informed neural networks and hybrid symbolic-neural approaches.</li>
                 </ul>
+
+
+                </div>
+
             </div>
         </div>
 
@@ -744,113 +807,142 @@
         <div id="projects" class="page">
             <h1>Projects &amp; Publications</h1>
 
-            <h2>Research Projects</h2>
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-header">
+            <div class="projects-grid">
+                <!-- PROJECT 1 -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23ece3d3' width='300' height='200'/%3E%3C/svg%3E" alt="State-Only Imitation Learning">
+                    </div>
+                    <div class="project-content">
                         <div class="project-title">State-Only Offline Imitation Learning</div>
-                        <div class="project-time">Aug 2025 – Present</div>
-                    </div>
-                    <p class="project-description">
-                        An offline framework enabling agents to learn optimal policies from sparse state-only expert demonstrations. Utilizes sub-trajectory identification and contrastive scoring.
-                    </p>
-                    <div class="project-meta">IIT Madras</div>
-                    <div class="project-tags">
-                        <span class="tag">RL</span>
-                        <span class="tag">Imitation Learning</span>
-                        <span class="tag">Python</span>
+                        <p class="project-description">
+                            An offline framework enabling agents to learn optimal policies from sparse state-only expert demonstrations. Utilizes sub-trajectory identification and contrastive scoring.
+                        </p>
+                        <div class="project-meta">
+                            <span>Aug 2025 – Present</span>
+                            <span>IIT Madras</span>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">RL</span>
+                            <span class="tag">Imitation Learning</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <a href="#" class="project-link">View Details</a>
                     </div>
                 </div>
 
-                <div class="project-item">
-                    <div class="project-header">
+                <!-- PROJECT 2 -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23ece3d3' width='300' height='200'/%3E%3C/svg%3E" alt="Steering Interface">
+                    </div>
+                    <div class="project-content">
                         <div class="project-title">Interactive Steering for Autonomous Driving Handover</div>
-                        <div class="project-time">Jul 2024 – Jan 2025</div>
-                    </div>
-                    <div class="project-subtitle">Published Research</div>
-                    <p class="project-description">
-                        Physical HMI for Level 3 autonomous vehicle control handover using quasi-direct drive actuators and multi-modal feedback (haptic, audio, visual).
-                    </p>
-                    <div class="project-meta">IIT Madras</div>
-                    <div class="project-tags">
-                        <span class="tag">HMI</span>
-                        <span class="tag">Control</span>
-                        <span class="tag">User Study</span>
+                        <div class="project-subtitle">Published Research</div>
+                        <p class="project-description">
+                            Physical HMI for Level 3 autonomous vehicle control handover using quasi-direct drive actuators and multi-modal feedback (haptic, audio, visual).
+                        </p>
+                        <div class="project-meta">
+                            <span>Jul 2024 – Jan 2025</span>
+                            <span>IIT Madras</span>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">HMI</span>
+                            <span class="tag">Control</span>
+                            <span class="tag">User Study</span>
+                        </div>
+                        <a href="#" class="project-link">View Details</a>
                     </div>
                 </div>
 
-                <div class="project-item">
-                    <div class="project-header">
+                <!-- PROJECT 3 -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23ece3d3' width='300' height='200'/%3E%3C/svg%3E" alt="De(l)Noise">
+                    </div>
+                    <div class="project-content">
                         <div class="project-title">De(l)Noise: Point Cloud Denoising</div>
-                        <div class="project-time">Dec 2023 – Mar 2024</div>
-                    </div>
-                    <div class="project-subtitle">Published in Computers &amp; Graphics, 2025</div>
-                    <p class="project-description">
-                        Lightweight parallel 3D point cloud denoising using Delaunay Triangulation. Handles massive point clouds (20M+ points) without manual parameter tuning.
-                    </p>
-                    <div class="project-meta">IIT Madras</div>
-                    <div class="project-tags">
-                        <span class="tag">Geometry</span>
-                        <span class="tag">3D Vision</span>
-                        <span class="tag">C++</span>
+                        <div class="project-subtitle">Published in Computers &amp; Graphics 2025</div>
+                        <p class="project-description">
+                            Lightweight parallel 3D point cloud denoising using Delaunay Triangulation. Handles massive point clouds (20M+ points) without manual parameter tuning.
+                        </p>
+                        <div class="project-meta">
+                            <span>Dec 2023 – Mar 2024</span>
+                            <span>IIT Madras</span>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Geometry</span>
+                            <span class="tag">3D Vision</span>
+                            <span class="tag">C++</span>
+                        </div>
+                        <a href="#" class="project-link">View Details</a>
                     </div>
                 </div>
-            </div>
 
-            <h2>Course Projects</h2>
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-header">
+                <!-- PROJECT 4 -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23ece3d3' width='300' height='200'/%3E%3C/svg%3E" alt="Hybrid A*">
+                    </div>
+                    <div class="project-content">
                         <div class="project-title">Greedy Multi-Agent Hybrid A*</div>
-                        <div class="project-time">Feb – Mar 2025</div>
-                    </div>
-                    <p class="project-description">
-                        Pathfinding algorithm for multi-agent, multi-target environments. Placed 3rd in class with smooth trajectory tracking using PID control.
-                    </p>
-                    <div class="project-meta">KTH Stockholm</div>
-                    <div class="project-tags">
-                        <span class="tag">Planning</span>
-                        <span class="tag">Multi-Agent</span>
-                        <span class="tag">Python</span>
+                        <p class="project-description">
+                            Pathfinding algorithm for multi-agent, multi-target environments. Placed 3rd in class with smooth trajectory tracking using PID control.
+                        </p>
+                        <div class="project-meta">
+                            <span>Feb – Mar 2025</span>
+                            <span>KTH Stockholm</span>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Planning</span>
+                            <span class="tag">Multi-Agent</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <a href="#" class="project-link">View Details</a>
                     </div>
                 </div>
 
-                <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title">Language-Based Hierarchical Agent</div>
-                        <div class="project-time">Aug – Nov 2024</div>
+                <!-- PROJECT 5 -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23ece3d3' width='300' height='200'/%3E%3C/svg%3E" alt="Language Hierarchical Agent">
                     </div>
-                    <p class="project-description">
-                        Hierarchical agent using language representation for partially observable reasoning tasks. Autoencoder-based feature extraction for policy learning with PPO.
-                    </p>
-                    <div class="project-meta">IIT Madras</div>
-                    <div class="project-tags">
-                        <span class="tag">RL</span>
-                        <span class="tag">Language</span>
-                        <span class="tag">Hierarchical</span>
+                    <div class="project-content">
+                        <div class="project-title">Language-Based Hierarchical Agent</div>
+                        <p class="project-description">
+                            Hierarchical agent using language representation for partially observable reasoning tasks. Autoencoder-based feature extraction for policy learning with PPO.
+                        </p>
+                        <div class="project-meta">
+                            <span>Aug – Nov 2024</span>
+                            <span>IIT Madras</span>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">RL</span>
+                            <span class="tag">Language</span>
+                            <span class="tag">Hierarchical</span>
+                        </div>
+                        <a href="#" class="project-link">View Details</a>
                     </div>
                 </div>
             </div>
 
             <h2>Publications</h2>
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-title">International Journal</div>
-                    <p class="project-description">
-                        <strong>De (l) Noise: A Delaunay based point cloud denoising algorithm</strong>
-                        <br>M Reghunath, K Muralidharan, A R Gurumoorthi et al.
-                        <br><em>Computers &amp; Graphics</em>, 104310, 2025
-                    </p>
-                </div>
+            <div class="entry">
+                <h3>International Journal</h3>
+                <p class="entry-description">
+                    <strong>De (l) Noise: A Delaunay based point cloud denoising algorithm</strong>
+                    <br>M Reghunath, K Muralidharan, A R Gurumoorthi et al.
+                    <br><em>Computers &amp; Graphics</em>, 104310, 2025
+                </p>
+            </div>
 
-                <div class="project-item">
-                    <div class="project-title">International Conference</div>
-                    <p class="project-description">
-                        <strong>Interactive steering for seamless transition during control handover in autonomous driving</strong>
-                        <br>A R Gurumoorthi, V Bagaria, B Sebastian
-                        <br><em>Proc. IEEE 4th International Conference on Smart Technologies for Power, Energy and Control (STPEC)</em>, 2025, pp. 1–6
-                    </p>
-                </div>
+            <div class="entry">
+                <h3>International Conference</h3>
+                <p class="entry-description">
+                    <strong>Interactive steering for seamless transition during control handover in autonomous driving</strong>
+                    <br>A R Gurumoorthi, V Bagaria, B Sebastian
+                    <br><em>Proc. IEEE 4th International Conference on Smart Technologies for Power, Energy and Control (STPEC)</em>, 2025, pp. 1–6
+                </p>
             </div>
         </div>
 
@@ -871,9 +963,11 @@
                         </div>
                         <div class="entry-time">Jun 2026 – Present</div>
                     </div>
-                    <p class="entry-description">
-                        Developed anomaly and leak detection algorithms for EV battery packs using multi-sensor telemetry, implemented graph-based mapping pipelines for road geometry reconstruction from vehicle odometry, and enabled fault identification and safety diagnostics for electric vehicle systems.
-                    </p>
+                    <ul class="entry-points">
+                        <li>Developed anomaly and leak detection algorithms for EV battery packs using multi-sensor telemetry</li>
+                        <li>Implemented graph-based mapping pipelines for road geometry reconstruction from vehicle odometry</li>
+                        <li>Enabled fault identification and safety diagnostics for electric vehicle systems</li>
+                    </ul>
                     <div class="entry-tags">
                         <span class="tag">Python</span>
                         <span class="tag">Machine Learning</span>
@@ -890,9 +984,11 @@
                         </div>
                         <div class="entry-time">May – Jul 2025</div>
                     </div>
-                    <p class="entry-description">
-                        Developed the autonomous driving stack for a Honda City test vehicle using a SMAC Planner for global planning and an MPPI controller for local control, conducted software-in-the-loop evaluation in NVIDIA Isaac Sim and hardware-in-the-loop testing on the instrumented vehicle, and built a LIDAR-camera fusion pipeline with extrinsic calibration and costmap generation.
-                    </p>
+                    <ul class="entry-points">
+                        <li>Developed autonomous driving stack for Honda City with SMAC Planner (global) and MPPI Controller (local)</li>
+                        <li>Conducted SIL evaluation in NVIDIA Isaac Sim and HIL testing on instrumented vehicle</li>
+                        <li>Built LIDAR-camera fusion pipeline with extrinsic calibration and costmap generation</li>
+                    </ul>
                     <div class="entry-tags">
                         <span class="tag">ROS2</span>
                         <span class="tag">Autonomous Driving</span>
@@ -913,9 +1009,12 @@
                         </div>
                         <div class="entry-time">Jan – May 2026</div>
                     </div>
-                    <p class="entry-description">
-                        Lecturer: Prof. Ramanathan Muthuganapathy. Created assignments and tutorial materials for data science and theory concepts, conducted interactive sessions explaining theoretical foundations, and facilitated problem-solving discussions and conceptual clarifications.
-                    </p>
+                    <div class="entry-description">Lecturer: Prof. Ramanathan Muthuganapathy</div>
+                    <ul class="entry-points">
+                        <li>Created assignments and tutorial materials for data science and theory concepts</li>
+                        <li>Conducted interactive sessions explaining theoretical foundations</li>
+                        <li>Facilitated problem-solving discussions and conceptual clarifications</li>
+                    </ul>
                 </div>
 
                 <div class="entry">
@@ -926,9 +1025,12 @@
                         </div>
                         <div class="entry-time">Aug – Nov 2025</div>
                     </div>
-                    <p class="entry-description">
-                        Lecturer: Prof. Srikanth Vedantam. Designed assignments covering mechanics topics such as Hooke's Law, beam bending, torsion, and buckling; led interactive tutorial sessions for conceptual understanding; and provided real-time problem-solving guidance to students.
-                    </p>
+                    <div class="entry-description">Lecturer: Prof. Srikanth Vedantam</div>
+                    <ul class="entry-points">
+                        <li>Designed assignments covering mechanics: Hooke's Law, beam bending, torsion, buckling</li>
+                        <li>Led interactive tutorial sessions for conceptual understanding</li>
+                        <li>Provided real-time problem-solving guidance to students</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -967,52 +1069,124 @@
 
             <h2>Relevant Coursework</h2>
 
-            <div class="course-groups">
-                <div>
-                    <div class="course-group-title">Machine Learning &amp; AI</div>
-                    <ul class="course-list">
-                        <li>Reinforcement Learning <span class="course-code">CS6700</span></li>
-                        <li>Recent Advances in RL <span class="course-code">DA7400</span></li>
-                        <li>Artificial Neural Networks &amp; Deep Architectures <span class="course-code">DD2437, KTH</span></li>
-                        <li>Multi-Agent Systems &amp; AI <span class="course-code">DD2438, KTH</span></li>
-                    </ul>
+            <div class="section">
+                <h3>Machine Learning &amp; AI</h3>
+                <div class="entry">
+                    <p class="entry-description">
+                        Reinforcement Learning (CS6700), Recent Advances in RL (DA7400), Artificial Neural Networks &amp; Deep Architectures (DD2437, KTH), Multi-Agent Systems &amp; AI (DD2438, KTH)
+                    </p>
                 </div>
+            </div>
 
-                <div>
-                    <div class="course-group-title">Robotics &amp; Control</div>
-                    <ul class="course-list">
-                        <li>Mechanics of Serial Robots <span class="course-code">ED6007</span></li>
-                        <li>Modern Control Theory <span class="course-code">CH5120</span></li>
-                        <li>Control Systems <span class="course-code">ED2040</span></li>
-                        <li>Introduction to Motion Planning <span class="course-code">ED5215</span></li>
-                        <li>Introduction to Robotics <span class="course-code">ID6040</span></li>
-                    </ul>
+            <div class="section">
+                <h3>Robotics &amp; Control</h3>
+                <div class="entry">
+                    <p class="entry-description">
+                        Mechanics of Serial Robots (ED6007), Modern Control Theory (CH5120), Control Systems (ED2040), Introduction to Motion Planning (ED5215), Introduction to Robotics (ID6040)
+                    </p>
                 </div>
+            </div>
 
-                <div>
-                    <div class="course-group-title">Geometry &amp; Computation</div>
-                    <ul class="course-list">
-                        <li>Algorithms in Computational Geometry <span class="course-code">ED5310</span></li>
-                        <li>Computational Geometry <span class="course-code">ED5310</span></li>
-                        <li>Nonlinear System Analysis <span class="course-code">EE6415</span></li>
-                    </ul>
+            <div class="section">
+                <h3>Geometry &amp; Computation</h3>
+                <div class="entry">
+                    <p class="entry-description">
+                        Algorithms in Computational Geometry (ED5310), Computational Geometry (ED5310), Nonlinear System Analysis (EE6415)
+                    </p>
                 </div>
+            </div>
 
-                <div>
-                    <div class="course-group-title">Other Disciplines</div>
-                    <ul class="course-list">
-                        <li>Digital Signal Processing for Engineering Design <span class="course-code">ED5917</span></li>
-                        <li>Linguistics <span class="course-code">HS3017, HS5025</span></li>
-                        <li>Theoretical Biophysics <span class="course-code">BT6220</span></li>
-                    </ul>
+            <div class="section">
+                <h3>Other Disciplines</h3>
+                <div class="entry">
+                    <p class="entry-description">
+                        Digital Signal Processing for Engineering Design (ED5917), Linguistics (HS3017, HS5025), Theoretical Biophysics (BT6220)
+                    </p>
                 </div>
             </div>
         </div>
+
+        <!-- ═════════════════════════════════════════════════════ -->
+        <!-- SKILLS PAGE                                            -->
+        <!-- ═════════════════════════════════════════════════════ -->
+        <!--<div id="skills" class="page">
+            <h1>Technical Skills</h1>
+
+            <div class="skills-grid">
+                <div class="skill-block">
+                    <div class="skill-category">Programming Languages</div>
+                    <ul class="skill-list">
+                        <li>Python (Primary)</li>
+                        <li>C/C++ (Robotics, Algorithms)</li>
+                        <li>C#</li>
+                        <li>MATLAB / Mathematica</li>
+                        <li>JavaScript (Basic)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-block">
+                    <div class="skill-category">Machine Learning</div>
+                    <ul class="skill-list">
+                        <li>Reinforcement Learning</li>
+                        <li>Imitation Learning</li>
+                        <li>Deep Learning</li>
+                        <li>Computer Vision</li>
+                        <li>PyTorch, TensorFlow</li>
+                    </ul>
+                </div>
+
+                <div class="skill-block">
+                    <div class="skill-category">Robotics &amp; Control</div>
+                    <ul class="skill-list">
+                        <li>ROS2 / ROS</li>
+                        <li>Motion Planning</li>
+                        <li>Control Theory</li>
+                        <li>Autonomous Systems</li>
+                        <li>Hardware Integration</li>
+                    </ul>
+                </div>
+
+                <div class="skill-block">
+                    <div class="skill-category">Geometric Processing</div>
+                    <ul class="skill-list">
+                        <li>Point Cloud Processing</li>
+                        <li>Delaunay Triangulation</li>
+                        <li>3D Geometry Algorithms</li>
+                        <li>Computational Geometry</li>
+                    </ul>
+                </div>
+
+                <div class="skill-block">
+                    <div class="skill-category">Simulation &amp; Tools</div>
+                    <ul class="skill-list">
+                        <li>NVIDIA Isaac Sim</li>
+                        <li>Gazebo / WeBots</li>
+                        <li>MATLAB Simulink</li>
+                        <li>Git / GitHub</li>
+                        <li>Docker</li>
+                    </ul>
+                </div>
+
+                <div class="skill-block">
+                    <div class="skill-category">Hardware</div>
+                    <ul class="skill-list">
+                        <li>Actuators &amp; Motors</li>
+                        <li>Sensors &amp; LIDAR</li>
+                        <li>Embedded Systems</li>
+                        <li>Arduino / STM32</li>
+                        <li>PCB Design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>-->
     </main>
 
     <!-- FOOTER -->
     <footer>
-        <p>Adithyaa Rettaikudi Gurumoorthi &nbsp;·&nbsp; <a href="mailto:adithyaa.off@gmail.com">adithyaa.off@gmail.com</a></p>
+        <p>Crafted with <span style="color: var(--accent);">♥</span> by Adithyaa | Last updated: Sept 2026</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">
+            Built with HTML, CSS &amp; JavaScript | <a href="https://github.com/adithyaa-rg" target="_blank">View Source</a>
+        </p>
     </footer>
 
     <script>
@@ -1037,6 +1211,15 @@
             // Scroll to top of content
             window.scrollTo(0, 0);
         }
+
+        // OPTIONAL: Load a real profile photo if you add one.
+        // Uncomment and update the path below to use assets/profile-photo.jpg
+        /*
+        document.addEventListener('DOMContentLoaded', () => {
+            const profilePhoto = document.getElementById('profilePhoto');
+            profilePhoto.src = 'assets/profile-photo.jpg';
+        });
+        */
     </script>
 </body>
 </html>
