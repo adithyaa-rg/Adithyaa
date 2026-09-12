@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Adithyaa Rettaikudi Gurumoorthi</title>
+        <meta
+            name="description"
+            content="Robotics & ML researcher at IIT Madras. Dual Degree in Engineering Design & Robotics."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --bg: #f9f6f1;
+                --surface: #f0ebe3;
+                --border: #e2d9ce;
+                --text: #2a1f18;
+                --muted: #7a6d65;
+                --heading: #1a120d;
+                --accent: #c0522f;
+                --link: #2d5fa0;
+                --tag-bg: #ede6dc;
+
+                --serif: "Cormorant Garamond", Georgia, serif;
+                --sans: "Source Sans 3", system-ui, sans-serif;
+                --mono: "JetBrains Mono", "Courier New", monospace;
+
+                --w: 700px;
+            }
+
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            html {
+                scroll-behavior: smooth;
+                font-size: 17px;
+            }
+
+            body {
+                background: var(--bg);
+                color: var(--text);
+                font-family: var(--sans);
+                font-weight: 400;
+                line-height: 1.7;
+                -webkit-font-smoothing: antialiased;
+            }
+
+            a {
+                color: var(--link);
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+
+            /* ── NAV ─────────────────────────────────────────── */
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                background: rgba(246, 243, 238, 0.88);
+                backdrop-filter: blur(14px);
+                border-bottom: 1px solid var(--border);
+                height: 54px;
+                display: flex;
+                align-items: center;
+                padding: 0 2rem;
+            }
+            .nav-logo {
+                font-family: var(--mono);
+                font-size: 0.78rem;
+                letter-spacing: 0.1em;
+                color: var(--accent);
+                font-weight: 400;
+            }
+            .nav-logo:hover {
+                text-decoration: none;
+            }
+
+            /* ── CONTAINER ───────────────────────────────────── */
+            main {
+                max-width: var(--w);
+                margin: 0 auto;
+                padding: 5.5rem 1.5rem 4rem;
+            }
+
+            /* ── HEADER / BIO ────────────────────────────────── */
+            .profile-photo {
+                width: 160px;
+                border-radius: 6px;
+                border: 1px solid var(--border);
+                display: block;
+                margin-bottom: 1.5rem;
+                filter: sepia(8%) contrast(1.04);
+            }
+            h1 {
+                font-family: var(--serif);
+                font-size: 2.3rem;
+                font-weight: 700;
+                color: var(--heading);
+                line-height: 1.15;
+                margin-bottom: 0.5rem;
+            }
+            .affil {
+                font-size: 0.95rem;
+                color: var(--muted);
+                margin-bottom: 1.25rem;
+            }
+            .affil strong {
+                color: var(--text);
+                font-weight: 600;
+            }
+            .bio p {
+                font-size: 1.02rem;
+                line-height: 1.8;
+                margin-bottom: 1rem;
+            }
+            .contact-line {
+                margin-top: 1.25rem;
+                font-family: var(--mono);
+                font-size: 0.85rem;
+                color: var(--muted);
+            }
+            .contact-line a {
+                color: var(--link);
+            }
+            .contact-line .sep {
+                color: var(--border);
+                margin: 0 0.5rem;
+            }
+
+            /* ── SECTIONS ────────────────────────────────────── */
+            section {
+                margin-top: 3rem;
+                padding-top: 2.25rem;
+                border-top: 1px solid var(--border);
+            }
+            h2 {
+                font-family: var(--serif);
+                font-size: 1.6rem;
+                font-weight: 600;
+                color: var(--heading);
+                margin-bottom: 1.25rem;
+            }
+            h3 {
+                font-family: var(--serif);
+                font-size: 1.15rem;
+                font-weight: 600;
+                color: var(--heading);
+                line-height: 1.35;
+            }
+            section > p.intro {
+                color: var(--muted);
+                margin-bottom: 1.5rem;
+                max-width: 620px;
+            }
+
+            /* Generic list styling for interests, publications */
+            ul.plain-list,
+            ol.plain-list {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            ul.plain-list > li,
+            ol.plain-list > li {
+                padding-left: 1.1rem;
+                position: relative;
+                line-height: 1.6;
+            }
+            ul.plain-list > li::before {
+                content: "—";
+                position: absolute;
+                left: 0;
+                color: var(--accent);
+            }
+            ol.plain-list {
+                counter-reset: pub;
+            }
+            ol.plain-list > li::before {
+                counter-increment: pub;
+                content: counter(pub) ".";
+                position: absolute;
+                left: 0;
+                color: var(--accent);
+                font-family: var(--mono);
+                font-size: 0.85rem;
+            }
+            .plain-list h3 {
+                display: inline;
+                font-size: 1.05rem;
+            }
+
+            /* Entries: experience / education / teaching / projects */
+            .entry {
+                margin-bottom: 1.85rem;
+            }
+            .entry:last-child {
+                margin-bottom: 0;
+            }
+            .entry-meta {
+                font-size: 0.85rem;
+                color: var(--muted);
+                margin: 0.3rem 0 0.6rem;
+            }
+            .entry-meta .badge {
+                font-family: var(--mono);
+                font-size: 0.7rem;
+                color: var(--accent);
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+            }
+            .entry p {
+                margin-bottom: 0.5rem;
+                font-size: 0.97rem;
+            }
+            .entry ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 0.35rem;
+                margin-top: 0.5rem;
+            }
+            .entry ul li {
+                padding-left: 1.2rem;
+                position: relative;
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            .entry ul li::before {
+                content: "–";
+                position: absolute;
+                left: 0;
+                color: var(--accent);
+            }
+            .entry .tags {
+                margin-top: 0.6rem;
+                font-family: var(--mono);
+                font-size: 0.78rem;
+                color: var(--muted);
+            }
+
+            /* Coursework clusters */
+            .cluster {
+                margin-bottom: 1.5rem;
+            }
+            .cluster:last-child {
+                margin-bottom: 0;
+            }
+            .cluster h3 {
+                font-family: var(--mono);
+                font-size: 0.8rem;
+                font-weight: 400;
+                color: var(--accent);
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                margin-bottom: 0.15rem;
+            }
+            .cluster .cluster-note {
+                font-size: 0.85rem;
+                font-style: italic;
+                color: var(--muted);
+                margin-bottom: 0.5rem;
+            }
+            .cluster .course-list {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+            .cluster .course-list .kth {
+                color: var(--link);
+            }
+
+            /* Skills */
+            .skill-row {
+                margin-bottom: 0.75rem;
+                font-size: 0.97rem;
+                line-height: 1.7;
+            }
+            .skill-row:last-child {
+                margin-bottom: 0;
+            }
+            .skill-row strong {
+                font-family: var(--mono);
+                font-size: 0.78rem;
+                color: var(--accent);
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+                display: block;
+                margin-bottom: 0.2rem;
+            }
+
+            /* ── FOOTER ──────────────────────────────────────── */
+            footer {
+                border-top: 1px solid var(--border);
+                padding: 2.5rem 0;
+                text-align: center;
+                margin-top: 1rem;
+            }
+            .footer-name {
+                font-family: var(--serif);
+                font-size: 1.15rem;
+                font-weight: 600;
+                color: var(--heading);
+                margin-bottom: 0.6rem;
+            }
+            .footer-links {
+                display: flex;
+                justify-content: center;
+                gap: 1.5rem;
+                margin-bottom: 0.75rem;
+            }
+            .footer-links a {
+                font-family: var(--mono);
+                font-size: 0.72rem;
+                color: var(--muted);
+                letter-spacing: 0.05em;
+            }
+            .footer-links a:hover {
+                color: var(--accent);
+            }
+            .footer-note {
+                font-size: 0.8rem;
+                color: var(--muted);
+            }
+
+            /* ── RESPONSIVE ──────────────────────────────────── */
+            @media (max-width: 640px) {
+                main {
+                    padding: 4.75rem 1.25rem 3rem;
+                }
+                h1 {
+                    font-size: 1.9rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a href="#" class="nav-logo">ARG_</a>
+        </nav>
+
+        <main>
+            <!-- ── HEADER ────────────────────────────────────── -->
+            <img src="projects/pfp3.jpg" alt="Adithyaa RG" class="profile-photo" />
+            <h1>Adithyaa Rettaikudi Gurumoorthi</h1>
+            <p class="affil">
+                <strong>Dual Degree</strong> — B.Tech Engineering Design +
+                M.Tech Robotics &nbsp;·&nbsp; <strong>IIT Madras</strong>
+                &nbsp;·&nbsp; CGPA 9.05/10
+            </p>
+            <div class="bio">
+                <p>
+                    I am a final-year student at IIT Madras interested in
+                    reinforcement learning, learning-based robot control, and
+                    the theoretical foundations of machine learning. My
+                    current research focuses on state-only imitation learning
+                    for agents with mismatched dynamics. I also spent a
+                    semester at KTH Stockholm — one of the most formative
+                    experiences of my life. Outside the lab, I love cinema,
+                    cooking, and chasing sunsets.
+                </p>
+            </div>
+            <p class="contact-line">
+                <a href="mailto:adithyaa.off@gmail.com">Email</a>
+                <span class="sep">·</span>
+                <a href="https://linkedin.com/in/adithyaa-rg" target="_blank">LinkedIn</a>
+                <span class="sep">·</span>
+                <a href="https://github.com/adithyaa-rg" target="_blank">GitHub</a>
+                <span class="sep">·</span>
+                <a href="https://scholar.google.com/citations?user=k9f5SCYAAAAJ&hl=en&authuser=2" target="_blank">Scholar</a>
+            </p>
+
+            <!-- ── RESEARCH INTERESTS ─────────────────────────── -->
+            <section id="research">
+                <h2>Research Interests</h2>
+                <ul class="plain-list">
+                    <li>
+                        <h3>Reinforcement Learning &amp; Optimal Control</h3> —
+                        Theoretical foundations of RL, optimal control theory,
+                        and their interplay for building capable autonomous
+                        systems.
+                    </li>
+                    <li>
+                        <h3>Learning from Demonstrations</h3> — Imitation
+                        Learning and Learning from Observations for
+                        manipulation, quadrupeds, and humanoids — especially
+                        across dynamic mismatches.
+                    </li>
+                    <li>
+                        <h3>Robot Autonomy &amp; Planning</h3> — Motion
+                        planning, trajectory tracking, and control for
+                        autonomous vehicles and legged robots in real-world,
+                        unstructured environments.
+                    </li>
+                    <li>
+                        <h3>Theoretical Machine Learning</h3> — Probabilistic
+                        modelling, density estimation, and principled
+                        algorithmic approaches to learning problems in ML.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- ── PUBLICATIONS ───────────────────────────────── -->
+            <section id="publications">
+                <h2>Published Work</h2>
+                <ol class="plain-list">
+                    <li>
+                        <h3>
+                            De(l)Noise: A Delaunay-Based Point Cloud Denoising
+                            Algorithm
+                        </h3>
+                        <p class="entry-meta">
+                            M Reghunath, K Muralidharan,
+                            <strong>A R Gurumoorthi</strong> et al. &nbsp;·&nbsp;
+                            Computers &amp; Graphics, 2025
+                        </p>
+                        <a
+                            href="https://www.sciencedirect.com/science/article/pii/S0097849325001517"
+                            target="_blank"
+                            >&#8594; View paper</a
+                        >
+                    </li>
+                    <li>
+                        <h3>
+                            Interactive Steering for Seamless Transition
+                            During Control Handover in Autonomous Driving
+                        </h3>
+                        <p class="entry-meta">
+                            <strong>A R Gurumoorthi</strong>, V Bagaria, B
+                            Sebastian &nbsp;·&nbsp; STPEC 2025
+                        </p>
+                        <a
+                            href="https://ieeexplore.ieee.org/document/11490991"
+                            target="_blank"
+                            >&#8594; View paper</a
+                        >
+                    </li>
+                </ol>
+            </section>
+
+            <!-- ── EXPERIENCE ─────────────────────────────────── -->
+            <section id="experience">
+                <h2>Research &amp; Industry Experience</h2>
+
+                <div class="entry">
+                    <h3>
+                        Learning from Demonstration for Agents: State only
+                        Imitation Learning
+                    </h3>
+                    <p class="entry-meta">
+                        Center for Responsible AI (CeRAI), IIT Madras
+                        &nbsp;·&nbsp; Advisor: Prof. B Ravindran, Prof. Nirav
+                        Bhatt &nbsp;·&nbsp; Aug 2025 – Present &nbsp;·&nbsp;
+                        <span class="badge">In Experimentation and Writing</span>
+                    </p>
+                    <ul>
+                        <li>
+                            Formulating algorithms for state-only imitation
+                            learning where imitator and expert have different
+                            dynamics
+                        </li>
+                        <li>
+                            Density estimation to identify useful transitions
+                            and assign rewards in the imitator dataset
+                        </li>
+                        <li>
+                            Sub-trajectory sampling via state sequence
+                            likelihoods; implementing Weighted Behaviour
+                            Cloning
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="entry">
+                    <h3>Computer Vision &amp; Planning Engineer Intern</h3>
+                    <p class="entry-meta">
+                        Embodied AI — Ola Krutrim &nbsp;·&nbsp; May – Jul 2025
+                        &nbsp;·&nbsp; <span class="badge">Completed</span>
+                    </p>
+                    <ul>
+                        <li>
+                            Built a full planning and control pipeline for a
+                            4W ADAS system using SMAC Planner + MPPI Controller
+                            on Nav2/ROS2
+                        </li>
+                        <li>
+                            Evaluated in NVIDIA Isaac Sim; on-ground validation
+                            on Honda City tracking pre-defined trajectories
+                        </li>
+                        <li>
+                            LIDAR-camera fusion pipeline across five cameras to
+                            generate costmaps for local planning
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="entry">
+                    <h3>User Study: Human Takeover Steering System</h3>
+                    <p class="entry-meta">
+                        Autonomous Systems Lab, IIT Madras &nbsp;·&nbsp;
+                        Advisor: Prof. Bijo Sebastian &nbsp;·&nbsp; Jul 2024 –
+                        Jan 2025 &nbsp;·&nbsp; <span class="badge">Published</span>
+                    </p>
+                    <ul>
+                        <li>
+                            Designed and built a custom CubeMars AK-80
+                            motor-based interactive steering system for AV
+                            control handover
+                        </li>
+                        <li>
+                            Torque and position control modes;
+                            potentiometer-driven accelerator and brake modules
+                        </li>
+                        <li>
+                            15-user study assessing human steering behaviour
+                            and takeover effectiveness — paper accepted
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="entry">
+                    <h3>
+                        Delaunay Triangulation-Aided Point Cloud Denoising
+                    </h3>
+                    <p class="entry-meta">
+                        Advanced Geometric Computational Lab, IIT Madras
+                        &nbsp;·&nbsp; Advisor: Prof. Ramanathan M &nbsp;·&nbsp;
+                        Dec 2023 – Oct 2024 &nbsp;·&nbsp;
+                        <span class="badge">Published</span>
+                    </p>
+                    <ul>
+                        <li>
+                            Noise and outlier removal for 3D point clouds via
+                            Delaunay triangulation and curve fitting
+                        </li>
+                        <li>
+                            Delaunay-based clustering to aid MLS surface
+                            fitting and PCA-based feature extraction
+                        </li>
+                        <li>
+                            Benchmarked against deep learning and
+                            optimisation-based methods on synthetic datasets
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="entry">
+                    <h3>
+                        Reward &amp; Environment Design for a Rehabilitation
+                        Leg
+                    </h3>
+                    <p class="entry-meta">
+                        GAMMA Lab, IIT Madras &nbsp;·&nbsp; Advisor: Prof.
+                        Sourav Rakshit &nbsp;·&nbsp; Apr – Jul 2023 &nbsp;·&nbsp;
+                        <span class="badge">Completed</span>
+                    </p>
+                    <ul>
+                        <li>
+                            MuJoCo simulation environment for a post-treatment
+                            exoskeleton leg with custom reward distribution
+                        </li>
+                        <li>
+                            Trajectory tracking tested with ME-TRPO and SAC
+                            algorithms
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ── PROJECTS ───────────────────────────────────── -->
+            <section id="projects">
+                <h2>Selected Projects</h2>
+
+                <div class="entry">
+                    <h3>
+                        <a href="projects/learning_from_demon.html"
+                            >Learning from Observations — State only Imitation
+                            Learning</a
+                        >
+                    </h3>
+                    <p class="entry-meta">
+                        Research — In Experimentation and Writing
+                    </p>
+                    <p>
+                        State-only imitation learning for imitator agents with
+                        different dynamics than the demonstrator. Density
+                        estimation, sub-trajectory scoring, and weighted
+                        behaviour cloning.
+                    </p>
+                    <p class="tags">
+                        Imitation Learning · RL · Density Estimation · PyTorch
+                    </p>
+                </div>
+
+                <div class="entry">
+                    <h3><a href="projects/ola_krutrim.html">ADAS Planning Pipeline</a></h3>
+                    <p class="entry-meta">Industry — Ola Krutrim</p>
+                    <p>
+                        End-to-end planning and control for a 4W autonomous
+                        system. SMAC + MPPI on Nav2/ROS2, LIDAR-camera fusion,
+                        and on-road validation on a Honda City.
+                    </p>
+                    <p class="tags">ROS2 · Nav2 · MPPI · NVIDIA Isaac</p>
+                </div>
+
+                <div class="entry">
+                    <h3>
+                        <a href="projects/user_study_steering.html"
+                            >Human Takeover Steering System</a
+                        >
+                    </h3>
+                    <p class="entry-meta">Research — Published</p>
+                    <p>
+                        Custom CubeMars AK-80 motor-based interactive steering
+                        for autonomous vehicle handover. Full hardware build,
+                        control implementation, and a 15-user study.
+                    </p>
+                    <p class="tags">Hardware · Controls · User Study</p>
+                </div>
+
+                <div class="entry">
+                    <h3>
+                        <a href="projects/delaunay_denoising.html"
+                            >Delaunay-Based Point Cloud Denoising</a
+                        >
+                    </h3>
+                    <p class="entry-meta">
+                        Published — Computers &amp; Graphics 2025
+                    </p>
+                    <p>
+                        Novel noise-removal algorithm for 3D point clouds
+                        using Delaunay triangulation, Moving Least Squares
+                        fitting, and PCA. Outperforms several deep learning
+                        baselines.
+                    </p>
+                    <p class="tags">3D Vision · Geometry · CGAL · Open3D</p>
+                </div>
+
+                <div class="entry">
+                    <h3>
+                        <a href="projects/battlesnakes.html"
+                            >Multi-Agent RL for Battlesnakes</a
+                        >
+                    </h3>
+                    <p class="entry-meta">Course Project — KTH DD2438</p>
+                    <p>
+                        PPO and DQN agents with custom reward shaping and
+                        curriculum learning. Constrained team-level policy
+                        divergence and conducted failure analysis on replay
+                        buffer sampling.
+                    </p>
+                    <p class="tags">PPO · DQN · Multi-Agent · Curriculum RL</p>
+                </div>
+
+                <div class="entry">
+                    <h3>
+                        <a href="projects/hybrid_astar.html"
+                            >Greedy Multi-Agent Hybrid A*</a
+                        >
+                    </h3>
+                    <p class="entry-meta">
+                        Course Project — KTH DD2438 &nbsp;·&nbsp; &#x1F3C6; 3rd
+                        Place
+                    </p>
+                    <p>
+                        Greedy prioritised Hybrid A* for multi-agent,
+                        multi-target path planning. Forward-backward velocity
+                        profiling, PID tracking for cars and drones. Placed
+                        3rd in class competition.
+                    </p>
+                    <p class="tags">
+                        Motion Planning · Hybrid A* · PID · Velocity Profiling
+                    </p>
+                </div>
+            </section>
+
+            <!-- ── EDUCATION ──────────────────────────────────── -->
+            <section id="education">
+                <h2>Academic Background</h2>
+
+                <div class="entry">
+                    <h3>
+                        Semester Exchange — Masters in Computer Science
+                    </h3>
+                    <p class="entry-meta">
+                        KTH Royal Institute of Technology, Stockholm
+                        &nbsp;·&nbsp; GPA: 9/10 &nbsp;·&nbsp; Jan – Jun 2025
+                    </p>
+                    <p>
+                        Coursework in Multi-Agent Systems &amp; AI and
+                        Artificial Neural Networks &amp; Deep Architectures.
+                        One of the most formative chapters of my life —
+                        research, exploration, and a deep connection with
+                        nature across Scandinavia and Europe.
+                    </p>
+                </div>
+
+                <div class="entry">
+                    <h3>
+                        Dual Degree — B.Tech Engineering Design + M.Tech
+                        Robotics
+                    </h3>
+                    <p class="entry-meta">
+                        Indian Institute of Technology Madras &nbsp;·&nbsp;
+                        CGPA: 9.05/10 &nbsp;·&nbsp; Nov 2021 – Jul 2026
+                        &nbsp;·&nbsp; <span class="badge">Ongoing</span>
+                    </p>
+                    <p>
+                        Five-year integrated programme spanning mechanical
+                        design, robotics, control theory, computational
+                        geometry, reinforcement learning, and motion planning.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ── TEACHING ───────────────────────────────────── -->
+            <section id="teaching">
+                <h2>Teaching Assistantship</h2>
+
+                <div class="entry">
+                    <h3>Design of Mechanical Systems 1 — ED2011</h3>
+                    <p class="entry-meta">
+                        IIT Madras &nbsp;·&nbsp; Advisor: Prof. Srikanth
+                        Vedantam &nbsp;·&nbsp; Aug – Nov 2025
+                    </p>
+                    <p>
+                        Created assignments on Hooke&rsquo;s Law, Beam
+                        Bending, Torsion, and Buckling. Conducted interactive
+                        tutorial sessions for theoretical concepts and
+                        problem-solving.
+                    </p>
+                </div>
+
+                <div class="entry">
+                    <h3>Data Science - Theory and Practice — ED5340</h3>
+                    <p class="entry-meta">
+                        IIT Madras &nbsp;·&nbsp; Advisor: Prof. Ramanathan
+                        Muthuganapathy &nbsp;·&nbsp; Jan – May 2026
+                    </p>
+                    <p>
+                        Helped in creating and conducting tutorials and
+                        laboratory sessions. Primarily involved in conducting
+                        sessions on Basic Python Programming and Machine
+                        Learning Fundamentals including Regression (Linear and
+                        Polynomial), SVM, PCA and Clustering.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ── COURSEWORK ─────────────────────────────────── -->
+            <section id="coursework">
+                <h2>Relevant Coursework</h2>
+                <p class="intro">
+                    A selection of courses across my five years at IIT Madras
+                    and my exchange semester at KTH Stockholm, organised by
+                    theme. Courses taken at KTH are marked in blue.
+                </p>
+
+                <div class="cluster">
+                    <h3>Reinforcement Learning &amp; Decision Making</h3>
+                    <p class="cluster-note">The core of my research interests</p>
+                    <p class="course-list">
+                        Reinforcement Learning ·
+                        <span class="kth">Multi-Agent Systems &amp; AI</span> ·
+                        Recent Advances in Reinforcement Learning ·
+                        Introduction to Probability and Statistics ·
+                        Introduction to Motion Planning
+                    </p>
+                </div>
+
+                <div class="cluster">
+                    <h3>Robotics &amp; Control</h3>
+                    <p class="cluster-note">Control theory and robot dynamics</p>
+                    <p class="course-list">
+                        Modern Control Theory · Nonlinear System Analysis ·
+                        Mechanics of Serial Robots
+                    </p>
+                </div>
+
+                <div class="cluster">
+                    <h3>Machine Learning &amp; Deep Learning</h3>
+                    <p class="cluster-note">Theory and architecture</p>
+                    <p class="course-list">
+                        <span class="kth"
+                            >Artificial Neural Networks &amp; Deep
+                            Architectures</span
+                        >
+                        · Machine Learning Techniques · Data Science — Theory
+                        &amp; Practice
+                    </p>
+                </div>
+
+                <div class="cluster">
+                    <h3>Mathematics &amp; Computation</h3>
+                    <p class="cluster-note">Foundations and geometry</p>
+                    <p class="course-list">
+                        Algorithms in Computational Geometry · Series &amp;
+                        Matrices · Differential Equations · Introduction to
+                        Computation and Visualisation · Functions of Several
+                        Variables
+                    </p>
+                </div>
+
+                <div class="cluster">
+                    <h3>Mechanical &amp; Systems Design</h3>
+                    <p class="cluster-note">The engineering design core</p>
+                    <p class="course-list">
+                        Mechatronics Systems Design · Design of Mechanical
+                        Systems I &amp; II · Human Anatomy, Physiology &amp;
+                        Biomechanics · Introduction to Robotics &amp; Field
+                        and Service Robotics · Digital Signal Processing
+                    </p>
+                </div>
+
+                <div class="cluster">
+                    <h3>Humanities &amp; Social Sciences</h3>
+                    <p class="cluster-note">The non-tech courses</p>
+                    <p class="course-list">
+                        Introduction to Linguistics · Linguistic Typology ·
+                        State, Politics and Foreign Policy in China · Film
+                        Theory and Practice
+                    </p>
+                </div>
+            </section>
+
+            <!-- ── SKILLS ─────────────────────────────────────── -->
+            <section id="skills">
+                <h2>Technical Toolkit</h2>
+
+                <div class="skill-row">
+                    <strong>Languages</strong>
+                    Python · C / C++ · C# · MATLAB · Mathematica
+                </div>
+                <div class="skill-row">
+                    <strong>ML &amp; Robotics</strong>
+                    PyTorch · PyTorch Lightning · ROS2 / ROS · Nav2 · OpenAI
+                    Gym · MuJoCo · Open3D · CGAL
+                </div>
+                <div class="skill-row">
+                    <strong>Tools &amp; Platforms</strong>
+                    Linux · Git · NVIDIA Isaac · Unity · Fusion360 · Altium ·
+                    Arduino · Figma
+                </div>
+            </section>
+        </main>
+
+        <!-- ── FOOTER ─────────────────────────────────────────── -->
+        <footer>
+            <p class="footer-name">Adithyaa Rettaikudi Gurumoorthi</p>
+            <div class="footer-links">
+                <a href="mailto:adithyaa.off@gmail.com"
+                    >adithyaa.off@gmail.com</a
+                >
+                <a href="https://linkedin.com/in/adithyaa-rg" target="_blank"
+                    >LinkedIn</a
+                >
+                <a href="https://github.com/adithyaa-rg" target="_blank"
+                    >GitHub</a
+                >
+            </div>
+            <p class="footer-note">Chennai, India &nbsp;·&nbsp; IIT Madras</p>
+        </footer>
+    </body>
+</html>
